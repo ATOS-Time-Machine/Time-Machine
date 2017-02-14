@@ -11,4 +11,15 @@ $(document).ready(function(){
          }
      });
    });
+
+   $("#login").click(function(){
+     email=$("#email").val();
+     password=$("#password").val();
+     $.post("http://localhost:3000/login",{email: email, password: password}, function(data){
+       if(data==='done')
+         {
+           console.log("sent");
+         }
+     });
+   });
  });

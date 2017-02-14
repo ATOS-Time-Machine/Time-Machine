@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <div class="valign-wrapper row login-box">
+    <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
+      <form>
+        <div class="card-content">
+          <div class="card-title center-align valign-wrapper">
+            <img src="img/logo.png" height="55" width="160">
+            <span class="valign">Time Machine</span>
+          </div>
+
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s6"><a class="blue-text text-lighten-1" href="#reg">Register</a></li>
+              <li class="tab col s6"><a class="active blue-text text-lighten-1" href="#log">Login</a></li>
+            </ul>
+          </div>
+
+          <div id="reg">
+            <div class="row">
+              <div class="input-field col s12">
+                <label>Full Name</label>
+                <input type="text" class="validate" id="name" />
+              </div>
+              <div class="input-field col s12">
+                <label>Email Address</label>
+                <input type="email" class="validate" id="email" />
+              </div>
+              <div class="input-field col s12">
+                <label>New Password</label>
+                <input type="password" class="validate" id="password" />
+              </div>
+            </div>
+
+            <div class="card-action right-align">
+              <button type="submit" class="btn light-blue lighten-1 waves-effect waves-light" id="register">Register</button>
+            </div>
+          </div>
+
+          <div id="log">
+            <div class="row">
+              <div class="input-field col s12">
+                <label>Email Address</label>
+                <input type="email" class="validate"id="emailL" />
+              </div>
+              <div class="input-field col s12">
+                <label>Password</label>
+                <input type="password" class="validate"id="passwordL" />
+              </div>
+            </div>
+
+            <div class="card-action right-align">
+              <input type="submit" class="btn light-blue lighten-1 waves-effect waves-light" value="Login" id="login">
+            </div>
+          </div>
+
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts  -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>

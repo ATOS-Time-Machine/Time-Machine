@@ -6,7 +6,8 @@ $(document).ready(function(){
      password=$("#password").val();
      $.post("http://localhost:3000/register",{name: name, email: email, password: password}, function(data){
          if (data.allow) {
-             //window.location.href = "http://www.google.com";
+             document.cookie = data.token;
+             window.location.href = "home.html";
          }
      });
    });
@@ -17,10 +18,9 @@ $(document).ready(function(){
      $.post("http://localhost:3000/login",{email: email, password: password}, function(data){
          if (data.allow) {
              document.cookie = data.token;
-             alert(document.cookie);
-             window.location.href = "http://www.google.com";
+             window.location.href = "home.html";
          } else {
-             window.location.href = "http://www.bing.com";
+             alert("Login has failed"); //Change to something more appropriate later
          }
      });
    });

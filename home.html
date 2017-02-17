@@ -8,6 +8,7 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/chingyawhao/materialize-clockpicker/master/dist/css/materialize.clockpicker.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/home.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
@@ -27,12 +28,14 @@
                 <li class="tab"><a class="active" href="#home">Home</a></li>
                 <li class="tab"><a href="#">Past</a></li>
                 <li class="tab"><a href="#">Present</a></li>
-                <li class="tab"><a href="#">Request</a></li>
+                <li class="tab"><a href="#request">Request</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Page Content -->
+
+    <!-- Home Tab -->
     <main class="section container" id="home">
         <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
             <form>
@@ -88,6 +91,134 @@
         </div>
     </main>
 
+    <!-- Request Tab -->
+    <main class="section container" id="request">
+        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
+            <form>
+                <div class="card-content">
+                    <div class="card-title center-align valign-wrapper">
+                        <span class="valign">Overtime Request Form</span>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="contract">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Select a Contract</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select id="future">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Future</option>
+                                <option value="2">Retrospective</option>
+                            </select>
+                            <label>Future or Retrospective</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <label for="name">Expected Date</label>
+                            <input id="exdate" type="date" class="datepicker" />
+                        </div>
+
+                        <div class="input-field col s12">
+                            <label>Start Time</label>
+                            <input id="stime" class="timepicker" type="time" />
+                        </div>
+
+                        <div class="input-field col s12">
+                            <label for="name">Expected Duration</label>
+                            <input id="duration" type="text" class="validate" id="name" />
+                        </div>
+
+                        <div class="input-field col s12">
+                            <label for="name">USD Ticket No</label>
+                            <input id="usd" type="text" class="validate" id="name" />
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select id="WBS">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>WBS Code</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea" data-length="250"></textarea>
+                            <label for="textarea1">Reason Free Form</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Reason for Overtime</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Reason Cannot Done in Hours</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Overtime Rate</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <label for="name">Project Manager</label>
+                            <input type="text" class="validate" id="name" />
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Work Revenue Generating</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Who is paying?</label>
+                        </div>
+                    </div>
+
+                    <div class="card-action right-align">
+                        <button type="button" class="btn light-blue lighten-1 waves-effect waves-light" id="register">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
     <!-- Footer  -->
     <footer class="page-footer light-blue">
         <div class="container">
@@ -119,6 +250,8 @@
     <!-- Scripts  -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
+    <script src="https://cdn.rawgit.com/chingyawhao/materialize-clockpicker/master/dist/js/materialize.clockpicker.js"></script>
+    <script src="js/home.js"></script>
 </body>
 
 </html>

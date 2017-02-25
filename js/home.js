@@ -13,4 +13,6 @@ $(document).ready(function () {
         autoclose: false,
         vibrate: true // vibrate the device when dragging clock hand
     });
+
+    $(".dropdown-button").dropdown();
 });

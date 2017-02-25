@@ -8,19 +8,27 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.rawgit.com/chingyawhao/materialize-clockpicker/master/dist/css/materialize.clockpicker.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="https://cdn.rawgit.com/chingyawhao/materialize-clockpicker/master/dist/css/materialize.clockpicker.css" type="text/css"
+        rel="stylesheet" media="screen,projection" />
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/home.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body>
     <!-- Navigation Bar -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a class="blue-text text-lighten-1" href="#!">Edit Profile</a></li>
+        <li><a class="blue-text text-lighten-1" href="#!">WBS Code</a></li>
+        <li class="divider"></li>
+        <li><a class="blue-text text-lighten-1" href="#!">Log Out</a></li>
+    </ul>
+
     <nav class="nav-extended">
         <div class="nav-wrapper light-blue darken-1">
             <img class="brand-logo atos-logo" src="img/atos.png" height="55" width="160" style="padding-top: 0.5%; padding-left: 1%">
             <span href="" class="brand-logo center">Time Machine</span>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href=""><i class="material-icons right">person_pin</i>User Profile</a></li>
+                <li><a href="#!" class="dropdown-button" data-activates="dropdown1"><i class="material-icons right">person_pin</i>User Profile</a></li>
             </ul>
         </div>
         <div class="nav-content light-blue lighten-1">
@@ -117,26 +125,26 @@
                                 <option value="1">Future</option>
                                 <option value="2">Retrospective</option>
                             </select>
-                            <label>Future or Retrospective</label>
+                            <label for "future">Future or Retrospective</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="name">Expected Date</label>
+                            <label for="exdate">Expected Date</label>
                             <input id="exdate" type="date" class="datepicker" />
                         </div>
 
                         <div class="input-field col s12">
-                            <label>Start Time</label>
+                            <label for="stime">Start Time</label>
                             <input id="stime" class="timepicker" type="time" />
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="name">Expected Duration</label>
+                            <label for="duration">Expected Duration</label>
                             <input id="duration" type="text" class="validate" id="name" />
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="name">USD Ticket No</label>
+                            <label for="usd">USD Ticket No</label>
                             <input id="usd" type="text" class="validate" id="name" />
                         </div>
 
@@ -147,72 +155,72 @@
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>WBS Code</label>
+                            <label for="WBS">WBS Code</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" data-length="250"></textarea>
-                            <label for="textarea1">Reason Free Form</label>
+                            <label for="reasonfree">Reason Free Form</label>
+                            <textarea id="reasonfree" class="materialize-textarea" data-length="250"></textarea>
                         </div>
 
                         <div class="input-field col s12">
-                            <select>
+                            <select id="otreason">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>Reason for Overtime</label>
+                            <label for="otreason">Reason for Overtime</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <select>
+                            <select id="nothours">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>Reason Cannot Done in Hours</label>
+                            <label for="nothours">Reason Cannot Done in Hours</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <select>
+                            <select id="rate">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>Overtime Rate</label>
+                            <label for="rate">Overtime Rate</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="name">Project Manager</label>
-                            <input type="text" class="validate" id="name" />
+                            <label for="manager">Project Manager</label>
+                            <input type="text" class="validate" id="manager" />
                         </div>
 
                         <div class="input-field col s12">
-                            <select>
+                            <select id="revenue">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>Work Revenue Generating</label>
+                            <label for="revenue">Work Revenue Generating</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <select>
+                            <select id="paying">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>Who is paying?</label>
+                            <label for="paying">Who is paying?</label>
                         </div>
                     </div>
 
                     <div class="card-action right-align">
-                        <button type="button" class="btn light-blue lighten-1 waves-effect waves-light" id="register">Submit</button>
+                        <button type="button" class="btn light-blue lighten-1 waves-effect waves-light" id="submit">Submit</button>
                     </div>
                 </div>
             </form>

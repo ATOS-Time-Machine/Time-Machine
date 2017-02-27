@@ -17,10 +17,10 @@
 <body>
     <!-- Navigation Bar -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a class="blue-text text-lighten-1" href="#!">Edit Profile</a></li>
-        <li><a class="blue-text text-lighten-1" href="#!">WBS Code</a></li>
+        <li><a class="blue-text text-lighten-1" href="#profileModal">Edit Profile</a></li>
+        <li><a class="blue-text text-lighten-1" href="#wbsModal">WBS Code</a></li>
         <li class="divider"></li>
-        <li><a class="blue-text text-lighten-1" href="#!">Log Out</a></li>
+        <li><a class="blue-text text-lighten-1" href="">Log Out</a></li>
     </ul>
 
     <nav class="nav-extended">
@@ -35,7 +35,7 @@
             <ul class="tabs tabs-transparent">
                 <li class="tab"><a class="active" href="#home">Home</a></li>
                 <li class="tab"><a href="#">Past</a></li>
-                <li class="tab"><a href="#">Present</a></li>
+                <li class="tab"><a href="#present">Present</a></li>
                 <li class="tab"><a href="#request">Request</a></li>
             </ul>
         </div>
@@ -140,12 +140,12 @@
 
                         <div class="input-field col s12">
                             <label for="duration">Expected Duration</label>
-                            <input id="duration" type="text" class="validate" id="name" />
+                            <input id="duration" type="text" class="validate" />
                         </div>
 
                         <div class="input-field col s12">
                             <label for="usd">USD Ticket No</label>
-                            <input id="usd" type="text" class="validate" id="name" />
+                            <input id="usd" type="text" class="validate" />
                         </div>
 
                         <div class="input-field col s12">
@@ -227,6 +227,140 @@
         </div>
     </main>
 
+    <main class="section container" id="present">
+        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
+            <table>
+                <thead>
+                    <tr>
+                        <th data-field="id">Name</th>
+                        <th data-field="name">Item Name</th>
+                        <th data-field="price">Item Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Alvin</td>
+                        <td>Eclair</td>
+                        <td><button type="button" class="btn light-blue lighten-1 waves-effect waves-light" id="submit">Submit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Alan</td>
+                        <td>Jellybean</td>
+                        <td>$3.76</td>
+                    </tr>
+                    <tr>
+                        <td>Jonathan</td>
+                        <td>Lollipop</td>
+                        <td>$7.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Edit User Profile -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <h5>My Profile</h5>
+
+            <div class="row">
+                <form class="col s12">
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="das">DAS ID</label>
+                            <input id="das" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="fname">First Name</label>
+                            <input id="fname" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="lname">Last Name</label>
+                            <input id="lname" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="proll">Pay Roll</label>
+                            <input id="proll" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="loc">Location</label>
+                            <input id="loc" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="editmail">Email</label>
+                            <input id="editmail" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <select id="alerts">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">On</option>
+                                <option value="2">Off</option>
+                            </select>
+                            <label for="alerts">Email Alerts</label>
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <select id="editrole">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label for="editrole">Role</label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
+            <a class="modal-action modal-close waves-effect waves-teal btn-flat">Change Password</a>
+        </div>
+    </div>
+
+    <!-- Add WBS code -->
+    <div id="wbsModal" class="modal">
+        <div class="modal-content">
+            <h5>Add WBS Code</h5>
+
+            <div class="row">
+                <form class="col s12">
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <input id="image_title" type="text" class="validate">
+                            <label for="image_title">Title</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-teal btn-flat">Add</a>
+        </div>
+    </div>
+
     <!-- Footer  -->
     <footer class="page-footer light-blue">
         <div class="container">
@@ -236,7 +370,7 @@
                     <p class="grey-text text-lighten-4">
                         If you have not yet read the user guide a link can be found on the right hand side and there is a summary for using Time
                         Machine on the home page. The documentation for using Time Machine in conjunction with other software
-                        is also on the right hand side.
+                        is also on the right side.
                     </p>
                 </div>
                 <div class="col l4 offset-l2 s12">

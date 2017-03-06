@@ -149,13 +149,13 @@
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="WBS">
+                            <select id="wbs">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="WBS">WBS Code</label>
+                            <label for="wbs">WBS Code</label>
                         </div>
 
                         <div class="input-field col s12">
@@ -227,6 +227,7 @@
         </div>
     </main>
 
+    <!-- Present Tab -->
     <main class="section container" id="present">
         <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
             <table>
@@ -238,23 +239,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td><button type="button" class="btn light-blue lighten-1 waves-effect waves-light" id="submit">Submit</button></td>
-                    </tr>
-                    <tr>
-                        <td>Alan</td>
-                        <td>Jellybean</td>
-                        <td>$3.76</td>
-                    </tr>
-                    <tr>
-                        <td>Jonathan</td>
-                        <td>Lollipop</td>
-                        <td>$7.00</td>
-                    </tr>
-                </tbody>
+                <tbody id="resultsTable"></tbody>
             </table>
         </div>
     </main>
@@ -335,7 +320,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a class="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
+            <a id="update" class="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
             <a class="modal-action modal-close waves-effect waves-teal btn-flat">Change Password</a>
         </div>
     </div>

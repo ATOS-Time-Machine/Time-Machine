@@ -16,7 +16,7 @@
 
 <body>
     <!-- Navigation Bar -->
-    <ul id="dropdown1" class="dropdown-content">
+    <ul id="navbar_dropdown" class="dropdown-content">
         <li><a class="blue-text text-lighten-1" href="#profileModal">Edit Profile</a></li>
         <li><a class="blue-text text-lighten-1" href="#wbsModal">WBS Code</a></li>
         <li class="divider"></li>
@@ -28,15 +28,17 @@
             <img class="brand-logo atos-logo" src="img/atos.png" height="55" width="160" style="padding-top: 0.5%; padding-left: 1%">
             <span href="" class="brand-logo center">Time Machine</span>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#!" class="dropdown-button" data-activates="dropdown1"><i class="material-icons right">person_pin</i>User Profile</a></li>
+                <li><a href="#!" class="dropdown-button" data-activates="navbar_dropdown"><i class="material-icons right">person_pin</i>User Profile</a></li>
             </ul>
         </div>
         <div class="nav-content light-blue lighten-1">
             <ul class="tabs tabs-transparent">
                 <li class="tab"><a class="active" href="#home">Home</a></li>
-                <li class="tab"><a href="#">Past</a></li>
+                <li class="tab"><a href="#past">Past</a></li>
                 <li class="tab"><a href="#present">Present</a></li>
                 <li class="tab"><a href="#request">Request</a></li>
+                <li class="tab"><a href="#staff">Staff</a></li>
+                <li class="tab"><a href="#review" id="review_tab">Review</a></li>
             </ul>
         </div>
     </nav>
@@ -110,117 +112,117 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <select id="contract">
+                            <select id="request_contract">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>Select a Contract</label>
+                            <label for="request_contract">Select a Contract</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="future">
+                            <select id="request_future">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Future</option>
                                 <option value="2">Retrospective</option>
                             </select>
-                            <label for "future">Future or Retrospective</label>
+                            <label for="request_future">Future or Retrospective</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="exdate">Expected Date</label>
-                            <input id="exdate" type="date" class="datepicker" />
+                            <label for="request_date">Expected Date</label>
+                            <input id="request_date" type="date" class="datepicker" />
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="stime">Start Time</label>
-                            <input id="stime" class="timepicker" type="time" />
+                            <label for="request_time">Start Time</label>
+                            <input id="request_time" class="timepicker" type="time" />
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="duration">Expected Duration</label>
-                            <input id="duration" type="text" class="validate" />
+                            <label for="request_duration">Expected Duration</label>
+                            <input id="request_duration" type="text" class="validate" />
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="usd">USD Ticket No</label>
-                            <input id="usd" type="text" class="validate" />
+                            <label for="request_usd">USD Ticket No</label>
+                            <input id="request_usd" type="text" class="validate" />
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="wbs">
+                            <select id="request_wbs">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="wbs">WBS Code</label>
+                            <label for="request_wbs">WBS Code</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="reasonfree">Reason Free Form</label>
-                            <textarea id="reasonfree" class="materialize-textarea" data-length="250"></textarea>
+                            <label for="request_reason_free">Reason Free Form</label>
+                            <textarea id="request_reason_free" class="materialize-textarea" data-length="250"></textarea>
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="otreason">
+                            <select id="request_reason_overtime">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="otreason">Reason for Overtime</label>
+                            <label for="request_reason_overtime">Reason for Overtime</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="nothours">
+                            <select id="request_reason_hours">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="nothours">Reason Cannot Done in Hours</label>
+                            <label for="request_reason_hours">Reason Cannot Done in Hours</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="rate">
+                            <select id="request_rate">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="rate">Overtime Rate</label>
+                            <label for="request_rate">Overtime Rate</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="manager">Project Manager</label>
-                            <input type="text" class="validate" id="manager" />
+                            <label for="request_manager">Project Manager</label>
+                            <input type="text" class="validate" id="request_manager" />
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="revenue">
+                            <select id="request_revenue">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="revenue">Work Revenue Generating</label>
+                            <label for="request_revenue">Work Revenue Generating</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <select id="paying">
+                            <select id="request_paying">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="paying">Who is paying?</label>
+                            <label for="request_paying">Who is paying?</label>
                         </div>
                     </div>
 
                     <div class="card-action right-align">
-                        <button type="button" class="btn light-blue lighten-1 waves-effect waves-light" id="submit">Submit</button>
+                        <button type="button" class="btn light-blue lighten-1 waves-effect waves-light" id="request_submit">Submit</button>
                     </div>
                 </div>
             </form>
@@ -233,13 +235,69 @@
             <table>
                 <thead>
                     <tr>
-                        <th data-field="id">Name</th>
-                        <th data-field="name">Item Name</th>
-                        <th data-field="price">Item Price</th>
+                        <th data-field="present_date_plan">Planned Date</th>
+                        <th data-field="present_time">Planned Time</th>
+                        <th data-field="present_duration">Estimated Duration</th>
+                        <th data-field="present_contract">Contract</th>
+                        <th data-field="present_reason">Reason</th>
+                        <th data-field="present_approver">Approver</th>
+                        <th data-field="present_status">Approval Status</th>
+                        <th data-field="present_comment">Approver Comment</th>
+                        <th data-field="present_date_approved">Date Approved</th>
+                        <th data-field="present_confirm">Confirm</th>
                     </tr>
                 </thead>
 
-                <tbody id="resultsTable"></tbody>
+                <tbody id="present_results"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Staff Tab -->
+    <main class="section container" id="staff">
+        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
+            <div class="card-action right-align">
+                <a type="button" href="#userModal" class="btn light-blue lighten-1 waves-effect waves-light" id="staff_add">Add User</a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th data-field="staff_id">Staff ID</th>
+                        <th data-field="staff_first_name">First Name</th>
+                        <th data-field="staff_last_name">Surname</th>
+                        <th data-field="staff_group">Group</th>
+                        <th data-field="staff_location">Location</th>
+                        <th data-field="staff_email">E-Mail</th>
+                        <th data-field="staff_access">Access Level</th>
+                        <th data-field="staff_actions">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="staff_results"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Review Tab -->
+    <main class="section container" id="review">
+        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
+            <table>
+                <thead>
+                    <tr>
+                        <th data-field="review_employee">Employee</th>
+                        <th data-field="review_date">Date</th>
+                        <th data-field="review_time">Time</th>
+                        <th data-field="review_duration">Duration</th>
+                        <th data-field="review_rate">Rate</th>
+                        <th data-field="review_contract">Contract</th>
+                        <th data-field="review_usd">USD Ticket</th>
+                        <th data-field="review_reason">Reason</th>
+                        <th data-field="review_commands">Commands</th>
+                    </tr>
+                </thead>
+
+                <tbody id="review_results"></tbody>
             </table>
         </div>
     </main>
@@ -253,66 +311,66 @@
                 <form class="col s12">
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <label for="das">DAS ID</label>
-                            <input id="das" type="text" class="validate" />
+                            <label for="profile_das">DAS ID</label>
+                            <input id="profile_das" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <label for="fname">First Name</label>
-                            <input id="fname" type="text" class="validate" />
+                            <label for="profile_first_name">First Name</label>
+                            <input id="profile_first_name" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <label for="lname">Last Name</label>
-                            <input id="lname" type="text" class="validate" />
+                            <label for="profile_last_name">Last Name</label>
+                            <input id="profile_last_name" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <label for="proll">Pay Roll</label>
-                            <input id="proll" type="text" class="validate" />
+                            <label for="profile_pay_roll">Pay Roll</label>
+                            <input id="profile_pay_roll" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <label for="loc">Location</label>
-                            <input id="loc" type="text" class="validate" />
+                            <label for="profile_location">Location</label>
+                            <input id="profile_location" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <label for="editmail">Email</label>
-                            <input id="editmail" type="text" class="validate" />
+                            <label for="profile_email">Email</label>
+                            <input id="profile_email" type="email" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <select id="alerts">
+                            <select id="profile_alerts">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">On</option>
                                 <option value="2">Off</option>
                             </select>
-                            <label for="alerts">Email Alerts</label>
+                            <label for="profile_alerts">Email Alerts</label>
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <select id="editrole">
+                            <select id="profile_role">
                                 <option value="" disabled selected>Please Select</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label for="editrole">Role</label>
+                            <label for="profile_role">Role</label>
                         </div>
                     </div>
 
@@ -320,7 +378,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a id="update" class="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
+            <a id="profile_update" class="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
             <a class="modal-action modal-close waves-effect waves-teal btn-flat">Change Password</a>
         </div>
     </div>
@@ -334,8 +392,8 @@
                 <form class="col s12">
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <input id="image_title" type="text" class="validate">
-                            <label for="image_title">Title</label>
+                            <input id="wbs_code" type="text" class="validate">
+                            <label for="wbs_code">WBS code</label>
                         </div>
                     </div>
                 </form>
@@ -343,6 +401,111 @@
         </div>
         <div class="modal-footer">
             <a class="modal-action modal-close waves-effect waves-teal btn-flat">Add</a>
+        </div>
+    </div>
+
+    <!-- Add new user -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <h5>Add New User</h5>
+
+            <div class="row">
+                <form class="col s12">
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_das">DAS ID</label>
+                            <input id="user_das" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_password">Password</label>
+                            <input type="password" class="validate" id="user_password" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_confirm">Confirm Password</label>
+                            <input type="password" class="validate" id="user_confirm" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_first_name">First Name</label>
+                            <input id="user_first_name" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_last_name">Last Name</label>
+                            <input id="user_last_name" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_pay_roll">Pay Roll</label>
+                            <input id="user_pay_roll" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_location">Location</label>
+                            <input id="user_location" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="user_email">Email</label>
+                            <input id="user_email" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <select id="user_alerts">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">On</option>
+                                <option value="2">Off</option>
+                            </select>
+                            <label for="user_alerts">Email Alerts</label>
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <select id="user_role">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label for="user_role">Role</label>
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <select id="user_access">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Team Leader</option>
+                                <option value="2">User</option>
+                            </select>
+                            <label for="user_access">Access Level</label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a id="user_add" class="modal-action modal-close waves-effect waves-teal btn-flat">Add User</a>
         </div>
     </div>
 

@@ -20,7 +20,7 @@
         <li><a class="blue-text text-lighten-1" href="#profileModal">Edit Profile</a></li>
         <li><a class="blue-text text-lighten-1" href="#wbsModal">WBS Code</a></li>
         <li class="divider"></li>
-        <li><a class="blue-text text-lighten-1" href="">Log Out</a></li>
+        <li><a class="blue-text text-lighten-1" href="index.html">Log Out</a></li>
     </ul>
 
     <nav class="nav-extended">
@@ -311,43 +311,36 @@
                 <form class="col s12">
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
-                            <label for="profile_das">DAS ID</label>
-                            <input id="profile_das" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
                             <label for="profile_first_name">First Name</label>
-                            <input id="profile_first_name" type="text" class="validate" />
+                            <input id="profile_first_name" placeholder="" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
                             <label for="profile_last_name">Last Name</label>
-                            <input id="profile_last_name" type="text" class="validate" />
+                            <input id="profile_last_name" placeholder="" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
                             <label for="profile_pay_roll">Pay Roll</label>
-                            <input id="profile_pay_roll" type="text" class="validate" />
+                            <input id="profile_pay_roll" placeholder="" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
                             <label for="profile_location">Location</label>
-                            <input id="profile_location" type="text" class="validate" />
+                            <input id="profile_location" placeholder="" type="text" class="validate" />
                         </div>
                     </div>
 
                     <div class="row modal-form-row">
                         <div class="input-field col s12">
                             <label for="profile_email">Email</label>
-                            <input id="profile_email" type="email" class="validate" />
+                            <input id="profile_email" placeholder="" type="email" class="validate" />
                         </div>
                     </div>
 
@@ -506,6 +499,88 @@
         </div>
         <div class="modal-footer">
             <a id="user_add" class="modal-action modal-close waves-effect waves-teal btn-flat">Add User</a>
+        </div>
+    </div>
+
+    <!-- Approve Modal -->
+    <div id="approveModal" class="modal">
+        <div class="modal-content">
+            <h5>Process Overtime Request</h5>
+
+            <div class="row">
+                <form class="col s12">
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="approve_status">Status</label>
+                            <input id="approve_status" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="approve_comment">Comment</label>
+                            <textarea id="approve_comment" class="materialize-textarea" data-length="250"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a id="approve_process" class="modal-action modal-close waves-effect waves-teal btn-flat">Process Request</a>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h5>Confirm Overtime Request</h5>
+
+            <div class="row">
+                <form class="col s12">
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <select id="confirm_rate">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label for="confirm_rate">Actual Rate</label>
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="confirm_date">Actual Date</label>
+                            <input id="confirm_date" type="date" class="datepicker" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="confirm_time">Actual Start Time</label>
+                            <input id="confirm_time" class="timepicker" type="time" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="confirm_duration">Actual Duration</label>
+                            <input id="confirm_duration" type="text" class="validate" />
+                        </div>
+                    </div>
+
+                    <div class="row modal-form-row">
+                        <div class="input-field col s12">
+                            <label for="confirm_comment">Comment</label>
+                            <textarea id="confirm_comment" class="materialize-textarea" data-length="250"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a id="confirm_process" class="modal-action modal-close waves-effect waves-teal btn-flat">Process Request</a>
         </div>
     </div>
 

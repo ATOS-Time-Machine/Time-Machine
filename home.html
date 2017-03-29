@@ -12,12 +12,20 @@
         rel="stylesheet" media="screen,projection" />
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/home.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <!-- Scripts  -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="https://cdn.rawgit.com/chingyawhao/materialize-clockpicker/master/dist/js/materialize.clockpicker.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <ul id="navbar_dropdown" class="dropdown-content">
-        <li><a class="blue-text text-lighten-1" href="#profileModal">Edit Profile</a></li>
+        <li><a class="blue-text text-lighten-1" href="#profileModal" id="profile_menu">Edit Profile</a></li>
         <li><a class="blue-text text-lighten-1" href="#wbsModal">WBS Code</a></li>
         <li class="divider"></li>
         <li><a class="blue-text text-lighten-1" href="index.html">Log Out</a></li>
@@ -33,73 +41,16 @@
         </div>
         <div class="nav-content light-blue lighten-1">
             <ul class="tabs tabs-transparent">
-                <li class="tab"><a class="active" href="#home">Home</a></li>
-                <li class="tab"><a href="#past">Past</a></li>
-                <li class="tab"><a href="#present">Present</a></li>
-                <li class="tab"><a href="#request">Request</a></li>
-                <li class="tab"><a href="#staff">Staff</a></li>
+                <li class="tab"><a class="active" href="#request" id="request_tab">Request</a></li>
+                <li class="tab"><a href="#past" id="past_tab">Past</a></li>
+                <li class="tab"><a href="#present" id="present_tab">Present</a></li>
+                <li class="tab"><a href="#staff" id="staff_tab">Staff</a></li>
                 <li class="tab"><a href="#review" id="review_tab">Review</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Page Content -->
-
-    <!-- Home Tab -->
-    <main class="section container" id="home">
-        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
-            <form>
-                <div class="card-content">
-                    <div class="card-title center-align valign-wrapper">
-                        <span class="valign">System Messages</span>
-                    </div>
-
-                    <div class="row">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                        ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                        enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-                        dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                        dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore
-                        et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
-                        ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
-                        iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui
-                        dolorem eum fugiat quo voluptas nulla pariatur?
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <br>
-
-        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
-            <form>
-                <div class="card-content">
-                    <div class="col s12">
-                        <ul class="tabs">
-                            <li class="tab col s6"><a class="active blue-text text-lighten-1" href="">Useful Information</a></li>
-                            <li class="tab col s6"><a class="blue-text text-lighten-1" href="">Features</a></li>
-                            <li class="tab col s6"><a class="blue-text text-lighten-1" href="">System Information</a></li>
-                            <li class="tab col s6"><a class="blue-text text-lighten-1" href="">About</a></li>
-                        </ul>
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti
-                        quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                        in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
-                        facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque
-                        nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis
-                        dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-                        eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur
-                        a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus
-                        asperiores repellat.
-                    </div>
-                </div>
-            </form>
-        </div>
-    </main>
 
     <!-- Request Tab -->
     <main class="section container" id="request">
@@ -229,359 +180,43 @@
         </div>
     </main>
 
-    <!-- Present Tab -->
     <main class="section container" id="present">
-        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
-            <table>
-                <thead>
-                    <tr>
-                        <th data-field="present_date_plan">Planned Date</th>
-                        <th data-field="present_time">Planned Time</th>
-                        <th data-field="present_duration">Estimated Duration</th>
-                        <th data-field="present_contract">Contract</th>
-                        <th data-field="present_reason">Reason</th>
-                        <th data-field="present_approver">Approver</th>
-                        <th data-field="present_status">Approval Status</th>
-                        <th data-field="present_comment">Approver Comment</th>
-                        <th data-field="present_date_approved">Date Approved</th>
-                        <th data-field="present_confirm">Confirm</th>
-                    </tr>
-                </thead>
-
-                <tbody id="present_results"></tbody>
-            </table>
-        </div>
+        <!-- Present Tab -->
     </main>
 
-    <!-- Staff Tab -->
     <main class="section container" id="staff">
-        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
-            <div class="card-action right-align">
-                <a type="button" href="#userModal" class="btn light-blue lighten-1 waves-effect waves-light" id="staff_add">Add User</a>
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th data-field="staff_id">Staff ID</th>
-                        <th data-field="staff_first_name">First Name</th>
-                        <th data-field="staff_last_name">Surname</th>
-                        <th data-field="staff_group">Group</th>
-                        <th data-field="staff_location">Location</th>
-                        <th data-field="staff_email">E-Mail</th>
-                        <th data-field="staff_access">Access Level</th>
-                        <th data-field="staff_actions">Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody id="staff_results"></tbody>
-            </table>
-        </div>
+        <!-- Staff Tab -->
     </main>
 
-    <!-- Review Tab -->
     <main class="section container" id="review">
-        <div class="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
-            <table>
-                <thead>
-                    <tr>
-                        <th data-field="review_employee">Employee</th>
-                        <th data-field="review_date">Date</th>
-                        <th data-field="review_time">Time</th>
-                        <th data-field="review_duration">Duration</th>
-                        <th data-field="review_rate">Rate</th>
-                        <th data-field="review_contract">Contract</th>
-                        <th data-field="review_usd">USD Ticket</th>
-                        <th data-field="review_reason">Reason</th>
-                        <th data-field="review_commands">Commands</th>
-                    </tr>
-                </thead>
-
-                <tbody id="review_results"></tbody>
-            </table>
-        </div>
+        <!-- Review Tab -->
     </main>
+
+    <!-- Modals -->
 
     <!-- Edit User Profile -->
     <div id="profileModal" class="modal">
-        <div class="modal-content">
-            <h5>My Profile</h5>
-
-            <div class="row">
-                <form class="col s12">
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="profile_first_name">First Name</label>
-                            <input id="profile_first_name" placeholder="" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="profile_last_name">Last Name</label>
-                            <input id="profile_last_name" placeholder="" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="profile_pay_roll">Pay Roll</label>
-                            <input id="profile_pay_roll" placeholder="" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="profile_location">Location</label>
-                            <input id="profile_location" placeholder="" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="profile_email">Email</label>
-                            <input id="profile_email" placeholder="" type="email" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <select id="profile_alerts">
-                                <option value="" disabled selected>Please Select</option>
-                                <option value="1">On</option>
-                                <option value="2">Off</option>
-                            </select>
-                            <label for="profile_alerts">Email Alerts</label>
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <select id="profile_role">
-                                <option value="" disabled selected>Please Select</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                            <label for="profile_role">Role</label>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a id="profile_update" class="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
-            <a class="modal-action modal-close waves-effect waves-teal btn-flat">Change Password</a>
-        </div>
+        
     </div>
 
     <!-- Add WBS code -->
     <div id="wbsModal" class="modal">
-        <div class="modal-content">
-            <h5>Add WBS Code</h5>
-
-            <div class="row">
-                <form class="col s12">
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <input id="wbs_code" type="text" class="validate">
-                            <label for="wbs_code">WBS code</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a class="modal-action modal-close waves-effect waves-teal btn-flat">Add</a>
-        </div>
+        
     </div>
 
     <!-- Add new user -->
     <div id="userModal" class="modal">
-        <div class="modal-content">
-            <h5>Add New User</h5>
 
-            <div class="row">
-                <form class="col s12">
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_das">DAS ID</label>
-                            <input id="user_das" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_password">Password</label>
-                            <input type="password" class="validate" id="user_password" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_confirm">Confirm Password</label>
-                            <input type="password" class="validate" id="user_confirm" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_first_name">First Name</label>
-                            <input id="user_first_name" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_last_name">Last Name</label>
-                            <input id="user_last_name" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_pay_roll">Pay Roll</label>
-                            <input id="user_pay_roll" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_location">Location</label>
-                            <input id="user_location" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="user_email">Email</label>
-                            <input id="user_email" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <select id="user_alerts">
-                                <option value="" disabled selected>Please Select</option>
-                                <option value="1">On</option>
-                                <option value="2">Off</option>
-                            </select>
-                            <label for="user_alerts">Email Alerts</label>
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <select id="user_role">
-                                <option value="" disabled selected>Please Select</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                            <label for="user_role">Role</label>
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <select id="user_access">
-                                <option value="" disabled selected>Please Select</option>
-                                <option value="1">Team Leader</option>
-                                <option value="2">User</option>
-                            </select>
-                            <label for="user_access">Access Level</label>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a id="user_add" class="modal-action modal-close waves-effect waves-teal btn-flat">Add User</a>
-        </div>
     </div>
 
     <!-- Approve Modal -->
     <div id="approveModal" class="modal">
-        <div class="modal-content">
-            <h5>Process Overtime Request</h5>
-
-            <div class="row">
-                <form class="col s12">
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="approve_status">Status</label>
-                            <input id="approve_status" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="approve_comment">Comment</label>
-                            <textarea id="approve_comment" class="materialize-textarea" data-length="250"></textarea>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a id="approve_process" class="modal-action modal-close waves-effect waves-teal btn-flat">Process Request</a>
-        </div>
+        
     </div>
 
     <!-- Confirm Modal -->
     <div id="confirmModal" class="modal">
-        <div class="modal-content">
-            <h5>Confirm Overtime Request</h5>
-
-            <div class="row">
-                <form class="col s12">
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <select id="confirm_rate">
-                                <option value="" disabled selected>Please Select</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                            <label for="confirm_rate">Actual Rate</label>
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="confirm_date">Actual Date</label>
-                            <input id="confirm_date" type="date" class="datepicker" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="confirm_time">Actual Start Time</label>
-                            <input id="confirm_time" class="timepicker" type="time" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="confirm_duration">Actual Duration</label>
-                            <input id="confirm_duration" type="text" class="validate" />
-                        </div>
-                    </div>
-
-                    <div class="row modal-form-row">
-                        <div class="input-field col s12">
-                            <label for="confirm_comment">Comment</label>
-                            <textarea id="confirm_comment" class="materialize-textarea" data-length="250"></textarea>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a id="confirm_process" class="modal-action modal-close waves-effect waves-teal btn-flat">Process Request</a>
-        </div>
+        
     </div>
 
     <!-- Footer  -->
@@ -611,12 +246,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Scripts  -->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="https://cdn.rawgit.com/chingyawhao/materialize-clockpicker/master/dist/js/materialize.clockpicker.js"></script>
-    <script src="js/home.js"></script>
 </body>
 
 </html>

@@ -96,25 +96,130 @@ module.exports = ReactDOM;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var Messages = __webpack_require__(0);
 var React = __webpack_require__(1);
 var ReactDOM = __webpack_require__(2);
 $(function () {
+    var oldDate = null;
+    var oldTime = null;
+    var confirmFill = function () {
+        $.get("http://localhost:3000/present/" + document.cookie, function (data) {
+            var rows = [];
+            var _loop_1 = function () {
+                var res = data.results[i];
+                console.log(res);
+                rows.push(React.createElement("tr", null,
+                    React.createElement("td", null,
+                        " ",
+                        res.RequestDate,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.RequestTime,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Duration,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Contract,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.OvertimeReason,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Supervisor,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Status,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Comment,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.RequestDate,
+                        " "),
+                    React.createElement("td", null,
+                        React.createElement("a", { onClick: function (e) { oldDate = res.RequestDate; oldTime = res.RequestTime; }, type: 'button', href: '#confirmModal', className: 'btn light-blue lighten-1 waves-effect waves-light', id: 'process_confirm' }, "Process"))));
+            };
+            for (var i = 0; i < data.results.length; i++) {
+                _loop_1();
+            }
+            ReactDOM.render(React.createElement("div", { className: "col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4" },
+                React.createElement("table", null,
+                    React.createElement("thead", null,
+                        React.createElement("tr", null,
+                            React.createElement("th", { "data-field": "present_date_plan" }, "Planned Date"),
+                            React.createElement("th", { "data-field": "present_time" }, "Planned Time"),
+                            React.createElement("th", { "data-field": "present_duration" }, "Estimated Duration"),
+                            React.createElement("th", { "data-field": "present_contract" }, "Contract"),
+                            React.createElement("th", { "data-field": "present_reason" }, "Reason"),
+                            React.createElement("th", { "data-field": "present_approver" }, "Approver"),
+                            React.createElement("th", { "data-field": "present_status" }, "Approval Status"),
+                            React.createElement("th", { "data-field": "present_comment" }, "Approver Comment"),
+                            React.createElement("th", { "data-field": "present_date_approved" }, "Date Approved"),
+                            React.createElement("th", { "data-field": "present_confirm" }, "Confirm"))),
+                    React.createElement("tbody", { id: "present_results" }, rows))), document.getElementById("present"));
+        });
+    };
     $("#present_tab").parent().click(function () {
-        ReactDOM.render(React.createElement("div", { className: "col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4" },
-            React.createElement("table", null,
-                React.createElement("thead", null,
-                    React.createElement("tr", null,
-                        React.createElement("th", { "data-field": "present_date_plan" }, "Planned Date"),
-                        React.createElement("th", { "data-field": "present_time" }, "Planned Time"),
-                        React.createElement("th", { "data-field": "present_duration" }, "Estimated Duration"),
-                        React.createElement("th", { "data-field": "present_contract" }, "Contract"),
-                        React.createElement("th", { "data-field": "present_reason" }, "Reason"),
-                        React.createElement("th", { "data-field": "present_approver" }, "Approver"),
-                        React.createElement("th", { "data-field": "present_status" }, "Approval Status"),
-                        React.createElement("th", { "data-field": "present_comment" }, "Approver Comment"),
-                        React.createElement("th", { "data-field": "present_date_approved" }, "Date Approved"),
-                        React.createElement("th", { "data-field": "present_confirm" }, "Confirm"))),
-                React.createElement("tbody", { id: "present_results" }))), document.getElementById("present"));
+        confirmFill();
+    });
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "Confirm Overtime Request"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12" },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("select", { id: "confirm_rate" },
+                                React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                React.createElement("option", { value: "1" }, "Option 1"),
+                                React.createElement("option", { value: "2" }, "Option 2"),
+                                React.createElement("option", { value: "3" }, "Option 3")),
+                            React.createElement("label", { htmlFor: "confirm_rate" }, "Actual Rate"))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "confirm_date" }, "Actual Date"),
+                            React.createElement("input", { id: "confirm_date", type: "date", className: "datepicker" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "confirm_time" }, "Actual Start Time"),
+                            React.createElement("input", { id: "confirm_time", className: "timepicker", type: "time" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "confirm_duration" }, "Actual Duration"),
+                            React.createElement("input", { id: "confirm_duration", type: "text", className: "validate" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "confirm_comment" }, "Comment"),
+                            React.createElement("textarea", { id: "confirm_comment", className: "materialize-textarea", "data-length": "250" })))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "confirm_process", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Process Request"))), document.getElementById("confirmModal"));
+    $("#confirm_process").click(function () {
+        $.post("http://localhost:3000/present", {
+            token: document.cookie,
+            oldDate: oldDate,
+            oldTime: oldTime,
+            rate: $("#confirm_rate").val(),
+            newDate: $("#confirm_date").val(),
+            newTime: $("#confirm_time").val(),
+            duration: $("#confirm_duration").val()
+        }, function (data) {
+            if (data.success) {
+                Materialize.toast(Messages.toastSuccess, 5000);
+                confirmFill();
+            }
+            else {
+                Materialize.toast(Messages.toastFailure, 5000);
+            }
+        });
     });
 });
 
@@ -170,92 +275,115 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
-var React = __webpack_require__(1);
-var ReactDOM = __webpack_require__(2);
 $(function () {
-    ReactDOM.render(React.createElement("div", null,
-        React.createElement("div", { className: "modal-content" },
-            React.createElement("h5", null, "My Profile"),
-            React.createElement("div", { className: "row" },
-                React.createElement("form", { className: "col s12" },
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("label", { htmlFor: "profile_first_name" }, "First Name"),
-                            React.createElement("input", { id: "profile_first_name", placeholder: "", type: "text", className: "validate" }))),
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("label", { htmlFor: "profile_last_name" }, "Last Name"),
-                            React.createElement("input", { id: "profile_last_name", placeholder: "", type: "text", className: "validate" }))),
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("label", { htmlFor: "profile_pay_roll" }, "Pay Roll"),
-                            React.createElement("input", { id: "profile_pay_roll", placeholder: "", type: "text", className: "validate" }))),
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("label", { htmlFor: "profile_location" }, "Location"),
-                            React.createElement("input", { id: "profile_location", placeholder: "", type: "text", className: "validate" }))),
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("label", { htmlFor: "profile_email" }, "Email"),
-                            React.createElement("input", { id: "profile_email", placeholder: "", type: "email", className: "validate" }))),
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("select", { id: "profile_alerts" },
-                                React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
-                                React.createElement("option", { value: "1" }, "On"),
-                                React.createElement("option", { value: "2" }, "Off")),
-                            React.createElement("label", { htmlFor: "profile_alerts" }, "Email Alerts"))),
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("select", { id: "profile_role" },
-                                React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
-                                React.createElement("option", { value: "1" }, "Option 1"),
-                                React.createElement("option", { value: "2" }, "Option 2"),
-                                React.createElement("option", { value: "3" }, "Option 3")),
-                            React.createElement("label", { htmlFor: "profile_role" }, "Role"))),
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("select", { id: "user_access" },
-                                React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
-                                React.createElement("option", { value: "1" }, "Team Leader"),
-                                React.createElement("option", { value: "2" }, "User")),
-                            React.createElement("label", { htmlFor: "user_access" }, "Access Level")))))),
-        React.createElement("div", { className: "modal-footer" },
-            React.createElement("a", { id: "profile_update", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Update"),
-            React.createElement("a", { className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Change Password"))), document.getElementById("profileModal"));
-    $("#profile_update").click(function () {
-        $.post("http://localhost:3000/profile", {
-            first_name: $("#profile_first_name").val(),
-            last_name: $("#profile_last_name").val(),
-            pay_roll: $("#profile_pay_roll").val(),
-            location: $("#profile_location").val(),
-            email: $("#profile_email").val(),
-            alerts: $("#profile_alerts").val(),
-            role: $("#profile_role").val(),
-            token: document.cookie
-        }, function (data) {
-            if (data.success) {
-                Materialize.toast(Messages.toastSuccess, 5000);
-            }
-            else {
-                Materialize.toast(Messages.toastFailure, 5000);
-            }
-        });
-        profileFill();
-    });
-    $("#profile_menu").parent().click(function () {
-        profileFill();
-    });
-    var profileFill = function () {
-        $.get("http://localhost:3000/profile/" + document.cookie, function (data) {
-            $("#profile_first_name").val(data.results.FirstName);
-            $("#profile_last_name").val(data.results.LastName);
-            $("#profile_pay_roll").val(data.results.PayRoll);
-            $("#profile_location").val(data.results.Location);
-            $("#profile_email").val(data.results.Email);
-        });
-    };
+    /*ReactDOM.render(
+        <div>
+            <div className="modal-content">
+                <h5>My Profile</h5>
+
+                <div className="row">
+                    <form className="col s12">
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <label htmlFor="profile_first_name">First Name</label>
+                                <input id="profile_first_name" placeholder="" type="text" className="validate" />
+                            </div>
+                        </div>
+
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <label htmlFor="profile_last_name">Last Name</label>
+                                <input id="profile_last_name" placeholder="" type="text" className="validate" />
+                            </div>
+                        </div>
+
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <label htmlFor="profile_pay_roll">Pay Roll</label>
+                                <input id="profile_pay_roll" placeholder="" type="text" className="validate" />
+                            </div>
+                        </div>
+
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <label htmlFor="profile_location">Location</label>
+                                <input id="profile_location" placeholder="" type="text" className="validate" />
+                            </div>
+                        </div>
+
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <label htmlFor="profile_email">Email</label>
+                                <input id="profile_email" placeholder="" type="email" className="validate" />
+                            </div>
+                        </div>
+
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <select id="profile_alerts">
+                                    <option value="" disabled selected>Please Select</option>
+                                    <option value="1">On</option>
+                                    <option value="2">Off</option>
+                                </select>
+                                <label htmlFor="profile_alerts">Email Alerts</label>
+                            </div>
+                        </div>
+
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <select id="profile_role">
+                                    <option value="" disabled selected>Please Select</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                                <label htmlFor="profile_role">Role</label>
+                            </div>
+                        </div>
+
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <select id="user_access">
+                                    <option value="" disabled selected>Please Select</option>
+                                    <option value="1">Team Leader</option>
+                                    <option value="2">User</option>
+                                </select>
+                                <label htmlFor="user_access">Access Level</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div className="modal-footer">
+                <a id="profile_update" className="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
+                <a className="modal-action modal-close waves-effect waves-teal btn-flat">Change Password</a>
+            </div>
+        </div>,
+        document.getElementById("profileModal")
+    );*/
+    // $("#profile_update").click(function () {
+    //     $.post("http://localhost:3000/profile",
+    //         {
+    //             first_name: $("#profile_first_name").val(),
+    //             last_name: $("#profile_last_name").val(),
+    //             pay_roll: $("#profile_pay_roll").val(),
+    //             location: $("#profile_location").val(),
+    //             email: $("#profile_email").val(),
+    //             alerts: $("#profile_alerts").val(),
+    //             role: $("#profile_role").val(),
+    //             token: document.cookie
+    //         }, function (data) {
+    //             if (data.success) {
+    //                 Materialize.toast(Messages.toastSuccess, 5000);
+    //             } else {
+    //                 Materialize.toast(Messages.toastFailure, 5000);
+    //             }
+    //         });
+    //     profileFill();
+    // });
+    // $("#profile_menu").parent().click(function () {
+    //     profileFill();
+    // });
 });
 
 
@@ -304,14 +432,17 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var Messages = __webpack_require__(0);
 var React = __webpack_require__(1);
 var ReactDOM = __webpack_require__(2);
 $(function () {
-    $("#review_tab").parent().click(function () {
-        var rows = [];
-        console.log(document.cookie);
+    var das = null;
+    var date = null;
+    var time = null;
+    var reviewFill = function () {
         $.get("http://localhost:3000/review/" + document.cookie, function (data) {
-            for (var i = 0; i < data.results.length; i++) {
+            var rows = [];
+            var _loop_1 = function () {
                 var res = data.results[i];
                 rows.push(React.createElement("tr", null,
                     React.createElement("td", null,
@@ -347,7 +478,10 @@ $(function () {
                         res.OvertimeReason,
                         " "),
                     React.createElement("td", null,
-                        React.createElement("a", { type: 'button', href: '#approveModal', className: 'btn light-blue lighten-1 waves-effect waves-light', id: 'process_approve' }, "Process"))));
+                        React.createElement("a", { onClick: function (e) { das = res.StaffID; date = res.RequestDate; time = res.RequestTime; }, type: 'button', href: '#approveModal', className: 'btn light-blue lighten-1 waves-effect waves-light', id: 'process_approve' }, "Process"))));
+            };
+            for (var i = 0; i < data.results.length; i++) {
+                _loop_1();
             }
             ReactDOM.render(React.createElement("div", { className: "col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4", id: "review_results" },
                 React.createElement("table", null,
@@ -364,6 +498,42 @@ $(function () {
                             React.createElement("th", { "data-field": "review_commands" }, "Commands"))),
                     React.createElement("tbody", null, rows))), document.getElementById("review"));
         });
+    };
+    $("#review_tab").parent().click(function () {
+        reviewFill();
+    });
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "Process Overtime Request"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12" },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "approve_status" }, "Status"),
+                            React.createElement("input", { id: "approve_status", type: "text", className: "validate" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "approve_comment" }, "Comment"),
+                            React.createElement("textarea", { id: "approve_comment", className: "materialize-textarea", "data-length": "250" })))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "approve_process", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Process Request"))), document.getElementById("approveModal"));
+    $("#approve_process").click(function () {
+        $.post("http://localhost:3000/review", {
+            token: document.cookie,
+            status: $("#approve_status").val(),
+            comment: $("#approve_comment").val(),
+            das: das,
+            date: date,
+            time: time
+        }, function (data) {
+            if (data.success) {
+                Materialize.toast(Messages.toastSuccess, 5000);
+                reviewFill();
+            }
+            else {
+                Materialize.toast(Messages.toastFailure, 5000);
+            }
+        });
     });
 });
 
@@ -379,10 +549,21 @@ var Messages = __webpack_require__(0);
 var React = __webpack_require__(1);
 var ReactDOM = __webpack_require__(2);
 $(function () {
+    var das = document.cookie;
+    var profileFill = function () {
+        $.get("http://localhost:3000/profile/" + das, function (data) {
+            console.log(das);
+            $("#profile_first_name").val(data.results.FirstName);
+            $("#profile_last_name").val(data.results.LastName);
+            $("#profile_pay_roll").val(data.results.PayRoll);
+            $("#profile_location").val(data.results.Location);
+            $("#profile_email").val(data.results.Email);
+        });
+    };
     var staffFill = function () {
-        var rows = [];
         $.get("http://localhost:3000/staff/" + document.cookie, function (data) {
-            for (var i = 0; i < data.results.length; i++) {
+            var rows = [];
+            var _loop_1 = function () {
                 var res = data.results[i];
                 rows.push(React.createElement("tr", null,
                     React.createElement("td", null,
@@ -414,7 +595,10 @@ $(function () {
                         res.Access,
                         " "),
                     React.createElement("td", null,
-                        React.createElement("a", { type: 'button', href: '#userModal', className: 'btn light-blue lighten-1 waves-effect waves-light', id: 'process_confirm' }, "Edit Profile"))));
+                        React.createElement("a", { onClick: function (e) { das = res.StaffID; profileFill(); }, type: 'button', href: '#profileModal', className: 'btn light-blue lighten-1 waves-effect waves-light', id: 'process_confirm' }, "Edit Profile"))));
+            };
+            for (var i = 0; i < data.results.length; i++) {
+                _loop_1();
             }
             ReactDOM.render(React.createElement("div", { className: "col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4" },
                 React.createElement("div", { className: "card-action right-align" },
@@ -495,6 +679,57 @@ $(function () {
                             React.createElement("label", { htmlFor: "user_access" }, "Access Level")))))),
         React.createElement("div", { className: "modal-footer" },
             React.createElement("a", { id: "user_add", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Add User"))), document.getElementById("userModal"));
+    //Update profile form
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "My Profile"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12" },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "profile_first_name" }, "First Name"),
+                            React.createElement("input", { id: "profile_first_name", placeholder: "", type: "text", className: "validate" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "profile_last_name" }, "Last Name"),
+                            React.createElement("input", { id: "profile_last_name", placeholder: "", type: "text", className: "validate" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "profile_pay_roll" }, "Pay Roll"),
+                            React.createElement("input", { id: "profile_pay_roll", placeholder: "", type: "text", className: "validate" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "profile_location" }, "Location"),
+                            React.createElement("input", { id: "profile_location", placeholder: "", type: "text", className: "validate" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "profile_email" }, "Email"),
+                            React.createElement("input", { id: "profile_email", placeholder: "", type: "email", className: "validate" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("select", { id: "profile_alerts" },
+                                React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                React.createElement("option", { value: "1" }, "On"),
+                                React.createElement("option", { value: "2" }, "Off")),
+                            React.createElement("label", { htmlFor: "profile_alerts" }, "Email Alerts"))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("select", { id: "profile_role" },
+                                React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                React.createElement("option", { value: "1" }, "Option 1"),
+                                React.createElement("option", { value: "2" }, "Option 2"),
+                                React.createElement("option", { value: "3" }, "Option 3")),
+                            React.createElement("label", { htmlFor: "profile_role" }, "Role"))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("select", { id: "user_access" },
+                                React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                React.createElement("option", { value: "1" }, "Team Leader"),
+                                React.createElement("option", { value: "2" }, "User")),
+                            React.createElement("label", { htmlFor: "user_access" }, "Access Level")))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "profile_update", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Update"),
+            React.createElement("a", { className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Change Password"))), document.getElementById("profileModal"));
     $("#staff_tab").parent().click(function () {
         staffFill();
     });
@@ -523,6 +758,30 @@ $(function () {
             }
         });
     });
+    $("#profile_menu").parent().click(function () {
+        das = document.cookie;
+        profileFill();
+    });
+    $("#profile_update").click(function () {
+        $.post("http://localhost:3000/profile", {
+            first_name: $("#profile_first_name").val(),
+            last_name: $("#profile_last_name").val(),
+            pay_roll: $("#profile_pay_roll").val(),
+            location: $("#profile_location").val(),
+            email: $("#profile_email").val(),
+            alerts: $("#profile_alerts").val(),
+            role: $("#profile_role").val(),
+            token: das
+        }, function (data) {
+            if (data.success) {
+                Materialize.toast(Messages.toastSuccess, 5000);
+                staffFill();
+            }
+            else {
+                Materialize.toast(Messages.toastFailure, 5000);
+            }
+        });
+    });
 });
 
 
@@ -533,7 +792,6 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
 __webpack_require__(4);
 __webpack_require__(3);
 __webpack_require__(8);
@@ -592,38 +850,6 @@ $(function () {
     //     $("#profile_location").val(data.results.Location);
     //     $("#profile_email").val(data.results.Email);
     // });
-    $("#approve_process").click(function () {
-        var approve_status = $("#approve_status").val();
-        var approve_comment = $("#approve_comment").val();
-        $.post("http://localhost:3000/review", {
-            approve_status: approve_status,
-            approve_comment: approve_comment
-        }, function (data) {
-            if (data.success) {
-                Materialize.toast(Messages.toastSuccess, 5000);
-                window.location.href = "home.html";
-            }
-        });
-    });
-    $("#confirm_process").click(function () {
-        var confirm_rate = $("#confirm_rate").val();
-        var confirm_date = $("#confirm_date").val();
-        var confirm_time = $("#confirm_time").val();
-        var confirm_duration = $("#confirm_duration").val();
-        var das = document.cookie;
-        $.post("http://localhost:3000/present", {
-            confirm_rate: confirm_rate,
-            confirm_date: confirm_date,
-            confirm_time: confirm_time,
-            confirm_duration: confirm_duration,
-            das: das
-        }, function (data) {
-            if (data.success) {
-                Materialize.toast(Messages.toastSuccess, 5000);
-                window.location.href = "home.html";
-            }
-        });
-    });
 });
 
 

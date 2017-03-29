@@ -64,42 +64,4 @@ $(function () {
     //     $("#profile_location").val(data.results.Location);
     //     $("#profile_email").val(data.results.Email);
     // });
-
-
-    $("#approve_process").click(function () {
-        var approve_status = $("#approve_status").val();
-        var approve_comment = $("#approve_comment").val();
-
-        $.post("http://localhost:3000/review",
-            {
-                approve_status: approve_status,
-                approve_comment: approve_comment
-            }, function (data) {
-                if (data.success) {
-                    Materialize.toast(Messages.toastSuccess, 5000);
-                    window.location.href = "home.html";
-                }
-            });
-    });
-
-    $("#confirm_process").click(function () {
-        var confirm_rate = $("#confirm_rate").val();
-        var confirm_date = $("#confirm_date").val();
-        var confirm_time = $("#confirm_time").val();
-        var confirm_duration = $("#confirm_duration").val();
-        var das = document.cookie;
-        $.post("http://localhost:3000/present",
-            {
-                confirm_rate: confirm_rate,
-                confirm_date: confirm_date,
-                confirm_time: confirm_time,
-                confirm_duration: confirm_duration,
-                das: das
-            }, function (data) {
-                if (data.success) {
-                    Materialize.toast(Messages.toastSuccess, 5000);
-                    window.location.href = "home.html";
-                }
-            });
-    });
 });

@@ -3,7 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 $(function () {
-    ReactDOM.render(
+    /*ReactDOM.render(
         <div>
             <div className="modal-content">
                 <h5>My Profile</h5>
@@ -87,40 +87,30 @@ $(function () {
             </div>
         </div>,
         document.getElementById("profileModal")
-    );
+    );*/
 
-    $("#profile_update").click(function () {
-        $.post("http://localhost:3000/profile",
-            {
-                first_name: $("#profile_first_name").val(),
-                last_name: $("#profile_last_name").val(),
-                pay_roll: $("#profile_pay_roll").val(),
-                location: $("#profile_location").val(),
-                email: $("#profile_email").val(),
-                alerts: $("#profile_alerts").val(),
-                role: $("#profile_role").val(),
-                token: document.cookie
-            }, function (data) {
-                if (data.success) {
-                    Materialize.toast(Messages.toastSuccess, 5000);
-                } else {
-                    Materialize.toast(Messages.toastFailure, 5000);
-                }
-            });
-        profileFill();
-    });
+    // $("#profile_update").click(function () {
+    //     $.post("http://localhost:3000/profile",
+    //         {
+    //             first_name: $("#profile_first_name").val(),
+    //             last_name: $("#profile_last_name").val(),
+    //             pay_roll: $("#profile_pay_roll").val(),
+    //             location: $("#profile_location").val(),
+    //             email: $("#profile_email").val(),
+    //             alerts: $("#profile_alerts").val(),
+    //             role: $("#profile_role").val(),
+    //             token: document.cookie
+    //         }, function (data) {
+    //             if (data.success) {
+    //                 Materialize.toast(Messages.toastSuccess, 5000);
+    //             } else {
+    //                 Materialize.toast(Messages.toastFailure, 5000);
+    //             }
+    //         });
+    //     profileFill();
+    // });
 
-    $("#profile_menu").parent().click(function () {
-        profileFill();
-    });
-
-    let profileFill = function () {
-        $.get("http://localhost:3000/profile/" + document.cookie, function (data) {
-            $("#profile_first_name").val(data.results.FirstName);
-            $("#profile_last_name").val(data.results.LastName);
-            $("#profile_pay_roll").val(data.results.PayRoll);
-            $("#profile_location").val(data.results.Location);
-            $("#profile_email").val(data.results.Email);
-        });
-    }
+    // $("#profile_menu").parent().click(function () {
+    //     profileFill();
+    // });
 });

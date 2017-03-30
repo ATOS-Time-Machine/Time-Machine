@@ -437,21 +437,39 @@ $(function () {
             });
             $('.timepicker').pickatime();
             $(".dropdown-button").dropdown();
+            $("#request_submit").click(function () {
+                console.log("submitting overtime request");
+                $.post("http://localhost:3000/request", {
+                    token: document.cookie,
+                    contract: $("#request_contract").val(),
+                    future: $("#request_future").val(),
+                    date: $("#request_date").val(),
+                    time: $("#request_time").val(),
+                    duration: $("#request_duration").val(),
+                    usd: $("#request_usd").val(),
+                    wbs: $("#request_wbs").val(),
+                    reason_free: $("#request_reason_free").val(),
+                    reason_overtime: $("#request_reason_overtime").val(),
+                    reason_hours: $("#request_reason_hours").val(),
+                    rate: $("#request_rate").val(),
+                    manager: $("#request_manager").val(),
+                    revenue: $("#request_revenue").val(),
+                    paying: $("#request_paying").val()
+                }, function (data) {
+                    if (data.success) {
+                        Materialize.toast(Messages.toastSuccess, 5000);
+                    }
+                    else {
+                        Materialize.toast(Messages.toastFailure, 5000);
+                    }
+                });
+            });
         });
     };
     codeFill();
-    ReactDOM.render(React.createElement("div", null,
-        React.createElement("div", { className: "modal-content" },
-            React.createElement("h5", null, "Add WBS Code"),
-            React.createElement("div", { className: "row" },
-                React.createElement("form", { className: "col s12" },
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("input", { id: "wbs_code", type: "text", className: "validate" }),
-                            React.createElement("label", { htmlFor: "wbs_code" }, "WBS code")))))),
-        React.createElement("div", { className: "modal-footer" },
-            React.createElement("a", { id: "add_code", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Add"))), document.getElementById("wbsModal"));
-    $("#add_code").click(function () {
+    function add_code(e) {
+        e.preventDefault();
+        $("#wbsModal").modal('close');
         $.post("http://localhost:3000/code", {
             token: document.cookie,
             code: $("#wbs_code").val()
@@ -464,33 +482,19 @@ $(function () {
                 Materialize.toast(Messages.toastFailure, 5000);
             }
         });
-    });
-    $("#request_submit").click(function () {
-        $.post("http://localhost:3000/request", {
-            token: document.cookie,
-            contract: $("#request_contract").val(),
-            future: $("#request_future").val(),
-            date: $("#request_date").val(),
-            time: $("#request_time").val(),
-            duration: $("#request_duration").val(),
-            usd: $("#request_usd").val(),
-            wbs: $("#request_wbs").val(),
-            reason_free: $("#request_reason_free").val(),
-            reason_overtime: $("#request_reason_overtime").val(),
-            reason_hours: $("#request_reason_hours").val(),
-            rate: $("#request_rate").val(),
-            manager: $("#request_manager").val(),
-            revenue: $("#request_revenue").val(),
-            paying: $("#request_paying").val()
-        }, function (data) {
-            if (data.success) {
-                Materialize.toast(Messages.toastSuccess, 5000);
-            }
-            else {
-                Materialize.toast(Messages.toastFailure, 5000);
-            }
-        });
-    });
+    }
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "Add WBS Code"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12", onSubmit: add_code },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("input", { id: "wbs_code", type: "text", className: "validate" }),
+                            React.createElement("label", { htmlFor: "wbs_code" }, "WBS code")))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "add_code", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Add"))), document.getElementById("wbsModal"));
+    $("#add_code").click(add_code);
 });
 
 

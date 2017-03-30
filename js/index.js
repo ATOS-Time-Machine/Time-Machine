@@ -146,7 +146,7 @@ $(function () {
                         res.RequestDate,
                         " "),
                     React.createElement("td", null,
-                        React.createElement("a", { onClick: function (e) { oldDate = res.RequestDate; oldTime = res.RequestTime; }, type: 'button', href: '#confirmModal', className: 'btn light-blue lighten-1 waves-effect waves-light', id: 'process_confirm' }, "Process"))));
+                        React.createElement("a", { onClick: function (e) { oldDate = res.RequestDate; oldTime = res.RequestTime; }, type: 'button', href: '#confirmModal', className: 'btn light-blue lighten-1 waves-effect waves-light' }, "Process"))));
             };
             for (var i = 0; i < data.results.length; i++) {
                 _loop_1();
@@ -165,7 +165,7 @@ $(function () {
                             React.createElement("th", { "data-field": "present_comment" }, "Approver Comment"),
                             React.createElement("th", { "data-field": "present_date_approved" }, "Date Approved"),
                             React.createElement("th", { "data-field": "present_confirm" }, "Confirm"))),
-                    React.createElement("tbody", { id: "present_results" }, rows))), document.getElementById("present"));
+                    React.createElement("tbody", null, rows))), document.getElementById("present"));
         });
     };
     $("#present_tab").parent().click(function () {
@@ -275,115 +275,60 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(1);
+var ReactDOM = __webpack_require__(2);
 $(function () {
-    /*ReactDOM.render(
-        <div>
-            <div className="modal-content">
-                <h5>My Profile</h5>
-
-                <div className="row">
-                    <form className="col s12">
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <label htmlFor="profile_first_name">First Name</label>
-                                <input id="profile_first_name" placeholder="" type="text" className="validate" />
-                            </div>
-                        </div>
-
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <label htmlFor="profile_last_name">Last Name</label>
-                                <input id="profile_last_name" placeholder="" type="text" className="validate" />
-                            </div>
-                        </div>
-
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <label htmlFor="profile_pay_roll">Pay Roll</label>
-                                <input id="profile_pay_roll" placeholder="" type="text" className="validate" />
-                            </div>
-                        </div>
-
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <label htmlFor="profile_location">Location</label>
-                                <input id="profile_location" placeholder="" type="text" className="validate" />
-                            </div>
-                        </div>
-
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <label htmlFor="profile_email">Email</label>
-                                <input id="profile_email" placeholder="" type="email" className="validate" />
-                            </div>
-                        </div>
-
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <select id="profile_alerts">
-                                    <option value="" disabled selected>Please Select</option>
-                                    <option value="1">On</option>
-                                    <option value="2">Off</option>
-                                </select>
-                                <label htmlFor="profile_alerts">Email Alerts</label>
-                            </div>
-                        </div>
-
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <select id="profile_role">
-                                    <option value="" disabled selected>Please Select</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                </select>
-                                <label htmlFor="profile_role">Role</label>
-                            </div>
-                        </div>
-
-                        <div className="row modal-form-row">
-                            <div className="input-field col s12">
-                                <select id="user_access">
-                                    <option value="" disabled selected>Please Select</option>
-                                    <option value="1">Team Leader</option>
-                                    <option value="2">User</option>
-                                </select>
-                                <label htmlFor="user_access">Access Level</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div className="modal-footer">
-                <a id="profile_update" className="modal-action modal-close waves-effect waves-teal btn-flat">Update</a>
-                <a className="modal-action modal-close waves-effect waves-teal btn-flat">Change Password</a>
-            </div>
-        </div>,
-        document.getElementById("profileModal")
-    );*/
-    // $("#profile_update").click(function () {
-    //     $.post("http://localhost:3000/profile",
-    //         {
-    //             first_name: $("#profile_first_name").val(),
-    //             last_name: $("#profile_last_name").val(),
-    //             pay_roll: $("#profile_pay_roll").val(),
-    //             location: $("#profile_location").val(),
-    //             email: $("#profile_email").val(),
-    //             alerts: $("#profile_alerts").val(),
-    //             role: $("#profile_role").val(),
-    //             token: document.cookie
-    //         }, function (data) {
-    //             if (data.success) {
-    //                 Materialize.toast(Messages.toastSuccess, 5000);
-    //             } else {
-    //                 Materialize.toast(Messages.toastFailure, 5000);
-    //             }
-    //         });
-    //     profileFill();
-    // });
-    // $("#profile_menu").parent().click(function () {
-    //     profileFill();
-    // });
+    var confirmFill = function () {
+        $.get("http://localhost:3000/past/" + document.cookie, function (data) {
+            var rows = [];
+            for (var i = 0; i < data.results.length; i++) {
+                var res = data.results[i];
+                console.log(res);
+                rows.push(React.createElement("tr", null,
+                    React.createElement("td", null,
+                        " ",
+                        res.RequestDate,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.RequestTime,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Duration,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Contract,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.OvertimeReason,
+                        " "),
+                    React.createElement("td", null,
+                        " ",
+                        res.Supervisor,
+                        " "),
+                    React.createElement("td", null,
+                        React.createElement("a", { type: 'button', className: 'btn light-blue lighten-1 waves-effect waves-light' }, "Claim"))));
+            }
+            ReactDOM.render(React.createElement("div", { className: "col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4" },
+                React.createElement("table", null,
+                    React.createElement("thead", null,
+                        React.createElement("tr", null,
+                            React.createElement("th", { "data-field": "present_date_plan" }, "Date"),
+                            React.createElement("th", { "data-field": "present_time" }, "Time"),
+                            React.createElement("th", { "data-field": "present_duration" }, "Duration"),
+                            React.createElement("th", { "data-field": "present_contract" }, "Contract"),
+                            React.createElement("th", { "data-field": "present_reason" }, "Reason"),
+                            React.createElement("th", { "data-field": "present_approver" }, "Approver"),
+                            React.createElement("th", { "data-field": "present_confirm" }, "Claim"))),
+                    React.createElement("tbody", null, rows))), document.getElementById("past"));
+        });
+    };
+    $("#past_tab").parent().click(function () {
+        confirmFill();
+    });
 });
 
 
@@ -792,12 +737,15 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var Messages = __webpack_require__(0);
+var React = __webpack_require__(1);
+var ReactDOM = __webpack_require__(2);
 __webpack_require__(4);
+__webpack_require__(6);
+__webpack_require__(5);
 __webpack_require__(3);
 __webpack_require__(8);
 __webpack_require__(7);
-__webpack_require__(5);
-__webpack_require__(6);
 $(function () {
     //Form Options
     $('select').material_select();
@@ -808,48 +756,30 @@ $(function () {
     $('.timepicker').pickatime();
     $(".dropdown-button").dropdown();
     $('.modal').modal();
-    // $.get("http://localhost:3000/present/" + document.cookie, function (data) {
-    //     console.log(data.results);
-    //     for (var i = 0; i < data.results.length; i++) {
-    //         $("#present_results").append(
-    //             "<tr>" +
-    //             "<td>" + data.results[i].RequestDate + "</td>" +
-    //             "<td>" + data.results[i].RequestTime + "</td>" +
-    //             "<td>" + data.results[i].Duration + "</td>" +
-    //             "<td>" + data.results[i].Contract + "</td>" +
-    //             "<td>" + data.results[i].OvertimeReason + "</td>" +
-    //             "<td>" + data.results[i].Supervisor + "</td>" +
-    //             "<td>" + data.results[i].Status + "</td>" +
-    //             "<td>" + data.results[i].Comment + "</td>" +
-    //             "<td>" + data.results[i].RequestDate + "</td>" +
-    //             "<td><a type='button' href='#confirmModal' class='btn light-blue lighten-1 waves-effect waves-light' id='process_confirm'>Process</a></td>" +
-    //             "</tr>"
-    //         )
-    //     }
-    // });
-    // $.get("http://localhost:3000/staff/" + document.cookie, function (data) {
-    //     for (var i = 0; i < data.results.length; i++) {
-    //         $("#staff_results").append(
-    //             "<tr>" +
-    //             "<td>" + data.results[i].StaffID + "</td>" +
-    //             "<td>" + data.results[i].FirstName + "</td>" +
-    //             "<td>" + data.results[i].LastName + "</td>" +
-    //             "<td>" + data.results[i].Supervisor + "</td>" +
-    //             "<td>" + data.results[i].Location + "</td>" +
-    //             "<td>" + data.results[i].Email + "</td>" +
-    //             "<td>" + data.results[i].Access + "</td>" +
-    //             "<td><a type='button' href='#userModal' class='btn light-blue lighten-1 waves-effect waves-light' id='process_confirm'>Edit Profile</a></td>" +
-    //             "</tr>"
-    //         )
-    //     }
-    // });
-    // $.get("http://localhost:3000/profile/" + document.cookie, function (data) {
-    //     $("#profile_first_name").val(data.results.FirstName);
-    //     $("#profile_last_name").val(data.results.LastName);
-    //     $("#profile_pay_roll").val(data.results.PayRoll);
-    //     $("#profile_location").val(data.results.Location);
-    //     $("#profile_email").val(data.results.Email);
-    // });
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "Add WBS Code"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12" },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("input", { id: "wbs_code", type: "text", className: "validate" }),
+                            React.createElement("label", { htmlFor: "wbs_code" }, "WBS code")))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "add_code", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Add"))), document.getElementById("wbsModal"));
+    $("#add_code").click(function () {
+        $.post("http://localhost:3000/code", {
+            token: document.cookie,
+            code: $("#wbs_code").val()
+        }, function (data) {
+            if (data.success) {
+                Materialize.toast(Messages.toastSuccess, 5000);
+            }
+            else {
+                Materialize.toast(Messages.toastFailure, 5000);
+            }
+        });
+    });
 });
 
 

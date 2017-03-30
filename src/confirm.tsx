@@ -24,7 +24,7 @@ $(function () {
                         <td> {res.Comment} </td>
                         <td> {res.RequestDate} </td>
                         <td>
-                            <a onClick={ function(e) { oldDate = res.RequestDate; oldTime = res.RequestTime } } type='button' href='#confirmModal' className='btn light-blue lighten-1 waves-effect waves-light' id='process_confirm'>
+                            <a onClick={ function(e) { oldDate = res.RequestDate; oldTime = res.RequestTime } } type='button' href='#confirmModal' className='btn light-blue lighten-1 waves-effect waves-light'>
                                 Process
                             </a>
                         </td>
@@ -49,7 +49,7 @@ $(function () {
                             </tr>
                         </thead>
 
-                        <tbody id="present_results">
+                        <tbody>
                             {rows}
                         </tbody>
                     </table>

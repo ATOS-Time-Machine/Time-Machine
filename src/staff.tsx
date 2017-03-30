@@ -1,5 +1,4 @@
 import * as Messages from "./messages";
-import * as Profile from "./profile";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 

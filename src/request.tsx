@@ -3,6 +3,193 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 $(function () {
+    let codeFill = function () {
+        console.log("doing something");
+
+        $.get("http://localhost:3000/code/" + document.cookie, function (data) {
+            var rows = [];
+            for (var i = 0; i < data.results.length; i++) {
+                let res = data.results[i];
+                rows.push(
+                    <option value={res.WBSCode}>{res.WBSCode}</option>
+                );
+            }
+
+            ReactDOM.render(
+                <div className="col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4">
+                    <form>
+                        <div className="card-content">
+                            <div className="card-title center-align valign-wrapper">
+                                <span className="valign">Overtime Request Form</span>
+                            </div>
+
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <select id="request_contract">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label htmlFor="request_contract">Select a Contract</label>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <select id="request_future">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="1">Future</option>
+                                        <option value="2">Retrospective</option>
+                                    </select>
+                                    <label htmlFor="request_future">Future or Retrospective</label>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <label htmlFor="request_date">Expected Date</label>
+                                    <input id="request_date" type="date" className="datepicker" />
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <label htmlFor="request_time">Start Time</label>
+                                    <input id="request_time" className="timepicker" type="time" />
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <label htmlFor="request_duration">Expected Duration</label>
+                                    <input id="request_duration" type="text" className="validate" />
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <label htmlFor="request_usd">USD Ticket No</label>
+                                    <input id="request_usd" type="text" className="validate" />
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <select id="request_wbs">
+                                        <option value="" disabled selected>Please Select</option>
+                                        {rows}
+                                    </select>
+                                    <label htmlFor="request_wbs">WBS Code</label>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <label htmlFor="request_reason_free">Reason Free Form</label>
+                                    <textarea id="request_reason_free" className="materialize-textarea" data-length="250"></textarea>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <select id="request_reason_overtime">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label htmlFor="request_reason_overtime">Reason for Overtime</label>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <select id="request_reason_hours">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label htmlFor="request_reason_hours">Reason Cannot Done in Hours</label>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <select id="request_rate">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label htmlFor="request_rate">Overtime Rate</label>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <label htmlFor="request_manager">Project Manager</label>
+                                    <input type="text" className="validate" id="request_manager" />
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <select id="request_revenue">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label htmlFor="request_revenue">Work Revenue Generating</label>
+                                </div>
+
+                                <div className="input-field col s12">
+                                    <select id="request_paying">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label htmlFor="request_paying">Who is paying?</label>
+                                </div>
+                            </div>
+
+                            <div className="card-action right-align">
+                                <button type="button" className="btn light-blue lighten-1 waves-effect waves-light" id="request_submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>,
+                document.getElementById("request")
+            );
+            $('select').material_select();
+            $('.datepicker').pickadate({
+                selectMonths: true,
+                selectYears: 15
+            });
+            $('.timepicker').pickatime();
+            $(".dropdown-button").dropdown();
+        });
+    }
+
+    codeFill();
+
+    ReactDOM.render(
+        <div>
+            <div className="modal-content">
+                <h5>Add WBS Code</h5>
+
+                <div className="row">
+                    <form className="col s12">
+                        <div className="row modal-form-row">
+                            <div className="input-field col s12">
+                                <input id="wbs_code" type="text" className="validate" />
+                                <label htmlFor="wbs_code">WBS code</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div className="modal-footer">
+                <a id="add_code" className="modal-action modal-close waves-effect waves-teal btn-flat">Add</a>
+            </div>
+        </div>,
+        document.getElementById("wbsModal")
+    );
+
+    $("#add_code").click(function () {
+        $.post("http://localhost:3000/code",
+            {
+                token: document.cookie,
+                code: $("#wbs_code").val()
+            }, function (data) {
+                if (data.success) {
+                    Materialize.toast(Messages.toastSuccess, 5000);
+                    codeFill();
+                } else {
+                    Materialize.toast(Messages.toastFailure, 5000);
+                }
+            });
+    });
+
     $("#request_submit").click(function () {
         $.post("http://localhost:3000/request",
             {

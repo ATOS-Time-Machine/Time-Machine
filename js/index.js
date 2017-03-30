@@ -68,6 +68,18 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = ReactDOM;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78,27 +90,15 @@ exports.toastFailure = $('<span>Failure</span>');
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = React;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = ReactDOM;
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
-var React = __webpack_require__(1);
-var ReactDOM = __webpack_require__(2);
+var Messages = __webpack_require__(2);
+var React = __webpack_require__(0);
+var ReactDOM = __webpack_require__(1);
 $(function () {
     var oldDate = null;
     var oldTime = null;
@@ -231,9 +231,9 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
-var React = __webpack_require__(1);
-var ReactDOM = __webpack_require__(2);
+var Messages = __webpack_require__(2);
+var React = __webpack_require__(0);
+var ReactDOM = __webpack_require__(1);
 $(function () {
     $("#reg").parent().click(function () {
         //TODO: needs id changes
@@ -275,8 +275,8 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
-var ReactDOM = __webpack_require__(2);
+var React = __webpack_require__(0);
+var ReactDOM = __webpack_require__(1);
 $(function () {
     var confirmFill = function () {
         $.get("http://localhost:3000/past/" + document.cookie, function (data) {
@@ -339,8 +339,132 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
+var Messages = __webpack_require__(2);
+var React = __webpack_require__(0);
+var ReactDOM = __webpack_require__(1);
 $(function () {
+    var codeFill = function () {
+        console.log("doing something");
+        $.get("http://localhost:3000/code/" + document.cookie, function (data) {
+            var rows = [];
+            for (var i = 0; i < data.results.length; i++) {
+                var res = data.results[i];
+                rows.push(React.createElement("option", { value: res.WBSCode }, res.WBSCode));
+            }
+            ReactDOM.render(React.createElement("div", { className: "col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4" },
+                React.createElement("form", null,
+                    React.createElement("div", { className: "card-content" },
+                        React.createElement("div", { className: "card-title center-align valign-wrapper" },
+                            React.createElement("span", { className: "valign" }, "Overtime Request Form")),
+                        React.createElement("div", { className: "row" },
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_contract" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    React.createElement("option", { value: "1" }, "Option 1"),
+                                    React.createElement("option", { value: "2" }, "Option 2"),
+                                    React.createElement("option", { value: "3" }, "Option 3")),
+                                React.createElement("label", { htmlFor: "request_contract" }, "Select a Contract")),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_future" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    React.createElement("option", { value: "1" }, "Future"),
+                                    React.createElement("option", { value: "2" }, "Retrospective")),
+                                React.createElement("label", { htmlFor: "request_future" }, "Future or Retrospective")),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("label", { htmlFor: "request_date" }, "Expected Date"),
+                                React.createElement("input", { id: "request_date", type: "date", className: "datepicker" })),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("label", { htmlFor: "request_time" }, "Start Time"),
+                                React.createElement("input", { id: "request_time", className: "timepicker", type: "time" })),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("label", { htmlFor: "request_duration" }, "Expected Duration"),
+                                React.createElement("input", { id: "request_duration", type: "text", className: "validate" })),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("label", { htmlFor: "request_usd" }, "USD Ticket No"),
+                                React.createElement("input", { id: "request_usd", type: "text", className: "validate" })),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_wbs" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    rows),
+                                React.createElement("label", { htmlFor: "request_wbs" }, "WBS Code")),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("label", { htmlFor: "request_reason_free" }, "Reason Free Form"),
+                                React.createElement("textarea", { id: "request_reason_free", className: "materialize-textarea", "data-length": "250" })),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_reason_overtime" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    React.createElement("option", { value: "1" }, "Option 1"),
+                                    React.createElement("option", { value: "2" }, "Option 2"),
+                                    React.createElement("option", { value: "3" }, "Option 3")),
+                                React.createElement("label", { htmlFor: "request_reason_overtime" }, "Reason for Overtime")),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_reason_hours" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    React.createElement("option", { value: "1" }, "Option 1"),
+                                    React.createElement("option", { value: "2" }, "Option 2"),
+                                    React.createElement("option", { value: "3" }, "Option 3")),
+                                React.createElement("label", { htmlFor: "request_reason_hours" }, "Reason Cannot Done in Hours")),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_rate" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    React.createElement("option", { value: "1" }, "Option 1"),
+                                    React.createElement("option", { value: "2" }, "Option 2"),
+                                    React.createElement("option", { value: "3" }, "Option 3")),
+                                React.createElement("label", { htmlFor: "request_rate" }, "Overtime Rate")),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("label", { htmlFor: "request_manager" }, "Project Manager"),
+                                React.createElement("input", { type: "text", className: "validate", id: "request_manager" })),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_revenue" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    React.createElement("option", { value: "1" }, "Option 1"),
+                                    React.createElement("option", { value: "2" }, "Option 2"),
+                                    React.createElement("option", { value: "3" }, "Option 3")),
+                                React.createElement("label", { htmlFor: "request_revenue" }, "Work Revenue Generating")),
+                            React.createElement("div", { className: "input-field col s12" },
+                                React.createElement("select", { id: "request_paying" },
+                                    React.createElement("option", { value: "", disabled: true, selected: true }, "Please Select"),
+                                    React.createElement("option", { value: "1" }, "Option 1"),
+                                    React.createElement("option", { value: "2" }, "Option 2"),
+                                    React.createElement("option", { value: "3" }, "Option 3")),
+                                React.createElement("label", { htmlFor: "request_paying" }, "Who is paying?"))),
+                        React.createElement("div", { className: "card-action right-align" },
+                            React.createElement("button", { type: "button", className: "btn light-blue lighten-1 waves-effect waves-light", id: "request_submit" }, "Submit"))))), document.getElementById("request"));
+            $('select').material_select();
+            $('.datepicker').pickadate({
+                selectMonths: true,
+                selectYears: 15
+            });
+            $('.timepicker').pickatime();
+            $(".dropdown-button").dropdown();
+        });
+    };
+    codeFill();
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "Add WBS Code"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12" },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("input", { id: "wbs_code", type: "text", className: "validate" }),
+                            React.createElement("label", { htmlFor: "wbs_code" }, "WBS code")))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "add_code", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Add"))), document.getElementById("wbsModal"));
+    $("#add_code").click(function () {
+        $.post("http://localhost:3000/code", {
+            token: document.cookie,
+            code: $("#wbs_code").val()
+        }, function (data) {
+            if (data.success) {
+                Materialize.toast(Messages.toastSuccess, 5000);
+                codeFill();
+            }
+            else {
+                Materialize.toast(Messages.toastFailure, 5000);
+            }
+        });
+    });
     $("#request_submit").click(function () {
         $.post("http://localhost:3000/request", {
             token: document.cookie,
@@ -377,9 +501,9 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
-var React = __webpack_require__(1);
-var ReactDOM = __webpack_require__(2);
+var Messages = __webpack_require__(2);
+var React = __webpack_require__(0);
+var ReactDOM = __webpack_require__(1);
 $(function () {
     var das = null;
     var date = null;
@@ -490,9 +614,9 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
-var React = __webpack_require__(1);
-var ReactDOM = __webpack_require__(2);
+var Messages = __webpack_require__(2);
+var React = __webpack_require__(0);
+var ReactDOM = __webpack_require__(1);
 $(function () {
     var das = document.cookie;
     var profileFill = function () {
@@ -737,9 +861,6 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Messages = __webpack_require__(0);
-var React = __webpack_require__(1);
-var ReactDOM = __webpack_require__(2);
 __webpack_require__(4);
 __webpack_require__(6);
 __webpack_require__(5);
@@ -756,30 +877,6 @@ $(function () {
     $('.timepicker').pickatime();
     $(".dropdown-button").dropdown();
     $('.modal').modal();
-    ReactDOM.render(React.createElement("div", null,
-        React.createElement("div", { className: "modal-content" },
-            React.createElement("h5", null, "Add WBS Code"),
-            React.createElement("div", { className: "row" },
-                React.createElement("form", { className: "col s12" },
-                    React.createElement("div", { className: "row modal-form-row" },
-                        React.createElement("div", { className: "input-field col s12" },
-                            React.createElement("input", { id: "wbs_code", type: "text", className: "validate" }),
-                            React.createElement("label", { htmlFor: "wbs_code" }, "WBS code")))))),
-        React.createElement("div", { className: "modal-footer" },
-            React.createElement("a", { id: "add_code", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Add"))), document.getElementById("wbsModal"));
-    $("#add_code").click(function () {
-        $.post("http://localhost:3000/code", {
-            token: document.cookie,
-            code: $("#wbs_code").val()
-        }, function (data) {
-            if (data.success) {
-                Materialize.toast(Messages.toastSuccess, 5000);
-            }
-            else {
-                Materialize.toast(Messages.toastFailure, 5000);
-            }
-        });
-    });
 });
 
 

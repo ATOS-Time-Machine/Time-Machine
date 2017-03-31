@@ -8,7 +8,6 @@ $(function () {
             let rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];
-                console.log(res);
                 rows.push(
                     <tr>
                         <td> {res.RequestDate} </td>
@@ -17,11 +16,6 @@ $(function () {
                         <td> {res.Contract} </td>
                         <td> {res.OvertimeReason} </td>
                         <td> {res.Supervisor} </td>
-                        <td>
-                            <a type='button' className='btn light-blue lighten-1 waves-effect waves-light'>
-                                Claim
-                            </a>
-                        </td>
                     </tr>
                 );
             }
@@ -36,7 +30,6 @@ $(function () {
                                 <th data-field="present_contract">Contract</th>
                                 <th data-field="present_reason">Reason</th>
                                 <th data-field="present_approver">Approver</th>
-                                <th data-field="present_confirm">Claim</th>
                             </tr>
                         </thead>
 
@@ -44,6 +37,9 @@ $(function () {
                             {rows}
                         </tbody>
                     </table>
+                    <div className="card-action right-align">
+                        <a href="#claimModal" className="btn light-blue lighten-1 waves-effect waves-light" id="request_submit">Special Claims</a>
+                    </div>
                 </div>,
                 document.getElementById("past")
             );

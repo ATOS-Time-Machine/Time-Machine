@@ -11,7 +11,6 @@ $(function () {
             let rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];
-                console.log(res);
                 rows.push(
                     <tr>
                         <td> {res.RequestDate} </td>

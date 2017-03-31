@@ -4,7 +4,6 @@ import * as ReactDOM from "react-dom";
 
 $(function () {
     $("#reg").parent().click(function () {
-        //TODO: needs id changes
         ReactDOM.render(
             <div>
                 <div className="row">

@@ -4,8 +4,6 @@ import * as ReactDOM from "react-dom";
 
 $(function () {
     let codeFill = function () {
-        console.log("doing something");
-
         $.get("http://localhost:3000/code/" + document.cookie, function (data) {
             var rows = [];
             for (var i = 0; i < data.results.length; i++) {

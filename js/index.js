@@ -107,7 +107,6 @@ $(function () {
             var rows = [];
             var _loop_1 = function () {
                 var res = data.results[i];
-                console.log(res);
                 rows.push(React.createElement("tr", null,
                     React.createElement("td", null,
                         " ",
@@ -236,7 +235,6 @@ var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(1);
 $(function () {
     $("#reg").parent().click(function () {
-        //TODO: needs id changes
         ReactDOM.render(React.createElement("div", null,
             React.createElement("div", { className: "row" },
                 React.createElement("div", { className: "input-field col s12" },
@@ -283,7 +281,6 @@ $(function () {
             var rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 var res = data.results[i];
-                console.log(res);
                 rows.push(React.createElement("tr", null,
                     React.createElement("td", null,
                         " ",
@@ -308,9 +305,7 @@ $(function () {
                     React.createElement("td", null,
                         " ",
                         res.Supervisor,
-                        " "),
-                    React.createElement("td", null,
-                        React.createElement("a", { type: 'button', className: 'btn light-blue lighten-1 waves-effect waves-light' }, "Claim"))));
+                        " ")));
             }
             ReactDOM.render(React.createElement("div", { className: "col card hoverable s12 pull-s1 m6 pull-m3 l4 pull-l4" },
                 React.createElement("table", null,
@@ -321,9 +316,10 @@ $(function () {
                             React.createElement("th", { "data-field": "present_duration" }, "Duration"),
                             React.createElement("th", { "data-field": "present_contract" }, "Contract"),
                             React.createElement("th", { "data-field": "present_reason" }, "Reason"),
-                            React.createElement("th", { "data-field": "present_approver" }, "Approver"),
-                            React.createElement("th", { "data-field": "present_confirm" }, "Claim"))),
-                    React.createElement("tbody", null, rows))), document.getElementById("past"));
+                            React.createElement("th", { "data-field": "present_approver" }, "Approver"))),
+                    React.createElement("tbody", null, rows)),
+                React.createElement("div", { className: "card-action right-align" },
+                    React.createElement("a", { href: "#claimModal", className: "btn light-blue lighten-1 waves-effect waves-light", id: "request_submit" }, "Special Claims"))), document.getElementById("past"));
         });
     };
     $("#past_tab").parent().click(function () {
@@ -344,7 +340,6 @@ var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(1);
 $(function () {
     var codeFill = function () {
-        console.log("doing something");
         $.get("http://localhost:3000/code/" + document.cookie, function (data) {
             var rows = [];
             for (var i = 0; i < data.results.length; i++) {
@@ -687,7 +682,9 @@ $(function () {
                             React.createElement("th", { "data-field": "staff_email" }, "E-Mail"),
                             React.createElement("th", { "data-field": "staff_access" }, "Access Level"),
                             React.createElement("th", { "data-field": "staff_actions" }, "Actions"))),
-                    React.createElement("tbody", null, rows))), document.getElementById("staff"));
+                    React.createElement("tbody", null, rows)),
+                React.createElement("div", { className: "card-action right-align" },
+                    React.createElement("a", { href: "#reportModal", className: "btn light-blue lighten-1 waves-effect waves-light", id: "request_submit" }, "Group Report"))), document.getElementById("staff"));
         });
     };
     //Add user form
@@ -865,6 +862,8 @@ $(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var ReactDOM = __webpack_require__(1);
 __webpack_require__(4);
 __webpack_require__(6);
 __webpack_require__(5);
@@ -881,6 +880,50 @@ $(function () {
     $('.timepicker').pickatime();
     $(".dropdown-button").dropdown();
     $('.modal').modal();
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "Generate Special Claims Form"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12" },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "claim_start_date" }, "Start Date"),
+                            React.createElement("input", { id: "claim_start_date", type: "date", className: "datepicker" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "claim_end_date" }, "End Date"),
+                            React.createElement("input", { id: "claim_end_date", type: "date", className: "datepicker" })))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "generate_claim", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Generate"))), document.getElementById("claimModal"));
+    ReactDOM.render(React.createElement("div", null,
+        React.createElement("div", { className: "modal-content" },
+            React.createElement("h5", null, "Generate Group Report"),
+            React.createElement("div", { className: "row" },
+                React.createElement("form", { className: "col s12" },
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "report_start_date" }, "Start Date"),
+                            React.createElement("input", { id: "report_start_date", type: "date", className: "datepicker" }))),
+                    React.createElement("div", { className: "row modal-form-row" },
+                        React.createElement("div", { className: "input-field col s12" },
+                            React.createElement("label", { htmlFor: "report_end_date" }, "End Date"),
+                            React.createElement("input", { id: "report_end_date", type: "date", className: "datepicker" })))))),
+        React.createElement("div", { className: "modal-footer" },
+            React.createElement("a", { id: "generate_report", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Generate"))), document.getElementById("reportModal"));
+    $("#generate_claim").click(function () {
+        var start_date = $("#claim_start_date").val();
+        var end_date = $("#claim_end_date").val();
+        if (start_date !== "" && end_date !== "") {
+            window.location.href = "http://localhost:3000/claim/" + document.cookie + "/" + start_date + "/" + end_date;
+        }
+    });
+    $("#generate_report").click(function () {
+        var start_date = $("#report_start_date").val();
+        var end_date = $("#report_end_date").val();
+        if (start_date !== "" && end_date !== "") {
+            window.location.href = "http://localhost:3000/report/" + document.cookie + "/" + start_date + "/" + end_date;
+        }
+    });
 });
 
 

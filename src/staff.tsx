@@ -63,7 +63,7 @@ $(function () {
                         </tbody>
                     </table>
                     <div className="card-action right-align">
-                        <a href="#reportModal" className="btn light-blue lighten-1 waves-effect waves-light" id="request_submit">Group Report</a>
+                        <a href="#reportModal" className="btn light-blue lighten-1 waves-effect waves-light">Group Report</a>
                     </div>
                 </div>,
                 document.getElementById("staff")

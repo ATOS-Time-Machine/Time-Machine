@@ -319,7 +319,7 @@ $(function () {
                             React.createElement("th", { "data-field": "present_approver" }, "Approver"))),
                     React.createElement("tbody", null, rows)),
                 React.createElement("div", { className: "card-action right-align" },
-                    React.createElement("a", { href: "#claimModal", className: "btn light-blue lighten-1 waves-effect waves-light", id: "request_submit" }, "Special Claims"))), document.getElementById("past"));
+                    React.createElement("a", { href: "#claimModal", className: "btn light-blue lighten-1 waves-effect waves-light" }, "Special Claims"))), document.getElementById("past"));
         });
     };
     $("#past_tab").parent().click(function () {
@@ -684,7 +684,7 @@ $(function () {
                             React.createElement("th", { "data-field": "staff_actions" }, "Actions"))),
                     React.createElement("tbody", null, rows)),
                 React.createElement("div", { className: "card-action right-align" },
-                    React.createElement("a", { href: "#reportModal", className: "btn light-blue lighten-1 waves-effect waves-light", id: "request_submit" }, "Group Report"))), document.getElementById("staff"));
+                    React.createElement("a", { href: "#reportModal", className: "btn light-blue lighten-1 waves-effect waves-light" }, "Group Report"))), document.getElementById("staff"));
         });
     };
     //Add user form

@@ -38,7 +38,7 @@ $(function () {
                         </tbody>
                     </table>
                     <div className="card-action right-align">
-                        <a href="#claimModal" className="btn light-blue lighten-1 waves-effect waves-light" id="request_submit">Special Claims</a>
+                        <a href="#claimModal" className="btn light-blue lighten-1 waves-effect waves-light">Special Claims</a>
                     </div>
                 </div>,
                 document.getElementById("past")

@@ -36,7 +36,8 @@ $(function () {
                 password: $("#log_password").val()
             }, function (data) {
                 if (data.success) {
-                    document.cookie = data.token;
+                    console.log(data.admin);
+                    document.cookie = JSON.stringify(data);
                     window.location.href = "home.html";
                 } else {
                     Materialize.toast(Messages.toastFailure, 5000);

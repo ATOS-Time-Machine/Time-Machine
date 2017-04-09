@@ -20,6 +20,12 @@ $(function () {
     $(".dropdown-button").dropdown();
     $('.modal').modal();
 
+    console.log(JSON.parse(document.cookie).admin);
+    if (JSON.parse(document.cookie).admin == 2) {
+        $("#review_tab").hide();
+        $("#staff_tab").hide();
+    }
+
     ReactDOM.render(
         <div>
             <div className="modal-content">
@@ -84,7 +90,7 @@ $(function () {
         let start_date = $("#claim_start_date").val();
         let end_date = $("#claim_end_date").val();
         if (start_date !== "" && end_date !== "") {
-            window.location.href = "http://localhost:3000/claim/" + document.cookie + "/" + start_date + "/" + end_date;
+            window.location.href = "http://localhost:3000/claim/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
         }
     });
 
@@ -92,7 +98,12 @@ $(function () {
         let start_date = $("#report_start_date").val();
         let end_date = $("#report_end_date").val();
         if (start_date !== "" && end_date !== "") {
-            window.location.href = "http://localhost:3000/report/" + document.cookie + "/" + start_date + "/" + end_date;
+            window.location.href = "http://localhost:3000/report/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
         }
+    });
+
+    $("#logout").click(function () {
+        document.cookie = "";
+        window.location.href = "index.html";       
     });
 });

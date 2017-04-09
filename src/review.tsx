@@ -8,7 +8,7 @@ $(function () {
     let time = null;
 
     let reviewFill = function () {
-        $.get("http://localhost:3000/review/" + document.cookie, function (data) {
+        $.get("http://localhost:3000/review/" + JSON.parse(document.cookie).token, function (data) {
             let rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];
@@ -94,7 +94,7 @@ $(function () {
     $("#approve_process").click(function () {
         $.post("http://localhost:3000/review",
             {
-                token: document.cookie,
+                token: JSON.parse(document.cookie).token,
                 status: $("#approve_status").val(),
                 comment: $("#approve_comment").val(),
                 das: das,

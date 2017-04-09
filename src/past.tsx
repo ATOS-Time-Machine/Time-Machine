@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 
 $(function () {
     let confirmFill = function () {
-        $.get("http://localhost:3000/past/" + document.cookie, function (data) {
+        $.get("http://localhost:3000/past/" + JSON.parse(document.cookie).token, function (data) {
             let rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];

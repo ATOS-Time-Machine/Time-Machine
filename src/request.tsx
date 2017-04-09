@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 
 $(function () {
     let codeFill = function () {
-        $.get("http://localhost:3000/code/" + document.cookie, function (data) {
+        $.get("http://localhost:3000/code/" + JSON.parse(document.cookie).token, function (data) {
             var rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];
@@ -149,7 +149,7 @@ $(function () {
                 console.log("submitting overtime request");
                 $.post("http://localhost:3000/request",
                     {
-                        token: document.cookie,
+                        token: JSON.parse(document.cookie).token,
                         contract: $("#request_contract").val(),
                         future: $("#request_future").val(),
                         date: $("#request_date").val(),
@@ -182,7 +182,7 @@ $(function () {
         $("#wbsModal").modal('close');
         $.post("http://localhost:3000/code",
             {
-                token: document.cookie,
+                token: JSON.parse(document.cookie).token,
                 code: $("#wbs_code").val()
             }, function (data) {
                 if (data.success) {

@@ -3,7 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 $(function () {
-    let das = document.cookie;
+    let das = JSON.parse(document.cookie).token;
 
     let profileFill = function () {
         $.get("http://localhost:3000/profile/" + das, function (data) {
@@ -17,7 +17,7 @@ $(function () {
     }
 
     let staffFill = function () {
-        $.get("http://localhost:3000/staff/" + document.cookie, function (data) {
+        $.get("http://localhost:3000/staff/" + JSON.parse(document.cookie).token, function (data) {
             let rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];
@@ -247,12 +247,12 @@ $(function () {
 
                         <div className="row modal-form-row">
                             <div className="input-field col s12">
-                                <select id="user_access">
+                                <select id="profile_access">
                                     <option value="" disabled selected>Please Select</option>
                                     <option value="1">Team Leader</option>
                                     <option value="2">User</option>
                                 </select>
-                                <label htmlFor="user_access">Access Level</label>
+                                <label htmlFor="profile_access">Access Level</label>
                             </div>
                         </div>
                     </form>
@@ -272,6 +272,7 @@ $(function () {
 
     //Add a New User
     $("#user_add").click(function () {
+        console.log($("#user_access").val());
         $.post("http://localhost:3000/adduser",
             {
                 das: $("#user_das").val(),
@@ -285,7 +286,7 @@ $(function () {
                 alerts: $("#user_alerts").val(),
                 role: $("#user_role").val(),
                 access: $("#user_access").val(),
-                token: document.cookie
+                token: JSON.parse(document.cookie).token
             }, function (data) {
                 if (data.success) {
                     Materialize.toast(Messages.toastSuccess, 5000);
@@ -297,7 +298,7 @@ $(function () {
     });
 
     $("#profile_menu").parent().click(function () {
-        das = document.cookie;
+        das = JSON.parse(document.cookie).token;
         profileFill();
     });
 

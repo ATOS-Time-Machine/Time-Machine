@@ -90,7 +90,7 @@ $(function () {
         let start_date = $("#claim_start_date").val();
         let end_date = $("#claim_end_date").val();
         if (start_date !== "" && end_date !== "") {
-            window.location.href = "http://localhost:3000/claim/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
+            window.location.href = "api/claim/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
         }
     });
 
@@ -98,7 +98,7 @@ $(function () {
         let start_date = $("#report_start_date").val();
         let end_date = $("#report_end_date").val();
         if (start_date !== "" && end_date !== "") {
-            window.location.href = "http://localhost:3000/report/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
+            window.location.href = "api/report/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
         }
     });
 

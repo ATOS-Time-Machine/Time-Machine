@@ -7,7 +7,7 @@ $(function () {
     let oldTime = null;
 
     let confirmFill = function () {
-        $.get("http://localhost:3000/present/" + JSON.parse(document.cookie).token, function (data) {
+        $.get("api/present/" + JSON.parse(document.cookie).token, function (data) {
             let rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];
@@ -119,7 +119,7 @@ $(function () {
     );
 
     $("#confirm_process").click(function () {
-        $.post("http://localhost:3000/present",
+        $.post("api/present",
             {
                 token: JSON.parse(document.cookie).token,
                 oldDate: oldDate,

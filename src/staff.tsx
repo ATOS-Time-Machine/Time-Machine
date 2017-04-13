@@ -6,7 +6,7 @@ $(function () {
     let das = JSON.parse(document.cookie).token;
 
     let profileFill = function () {
-        $.get("http://localhost:3000/profile/" + das, function (data) {
+        $.get("api/profile/" + das, function (data) {
             console.log(das);
             $("#profile_first_name").val(data.results.FirstName);
             $("#profile_last_name").val(data.results.LastName);
@@ -17,7 +17,7 @@ $(function () {
     }
 
     let staffFill = function () {
-        $.get("http://localhost:3000/staff/" + JSON.parse(document.cookie).token, function (data) {
+        $.get("api/staff/" + JSON.parse(document.cookie).token, function (data) {
             let rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 let res = data.results[i];
@@ -273,7 +273,7 @@ $(function () {
     //Add a New User
     $("#user_add").click(function () {
         console.log($("#user_access").val());
-        $.post("http://localhost:3000/adduser",
+        $.post("api/adduser",
             {
                 das: $("#user_das").val(),
                 password: $("#user_password").val(),
@@ -303,7 +303,7 @@ $(function () {
     });
 
     $("#profile_update").click(function () {
-        $.post("http://localhost:3000/profile",
+        $.post("api/profile",
             {
                 first_name: $("#profile_first_name").val(),
                 last_name: $("#profile_last_name").val(),

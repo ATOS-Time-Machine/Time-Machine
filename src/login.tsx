@@ -30,7 +30,7 @@ $(function () {
     });
 
     $("#login").click(function () {
-        $.post("http://localhost:3000/authenticate",
+        $.post("api/authenticate",
             {
                 id: $("#log_id").val(),
                 password: $("#log_password").val()

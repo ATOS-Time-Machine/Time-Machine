@@ -103,7 +103,7 @@ $(function () {
     var oldDate = null;
     var oldTime = null;
     var confirmFill = function () {
-        $.get("http://localhost:3000/present/" + JSON.parse(document.cookie).token, function (data) {
+        $.get("api/present/" + JSON.parse(document.cookie).token, function (data) {
             var rows = [];
             var _loop_1 = function () {
                 var res = data.results[i];
@@ -202,7 +202,7 @@ $(function () {
         React.createElement("div", { className: "modal-footer" },
             React.createElement("a", { id: "confirm_process", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Process Request"))), document.getElementById("confirmModal"));
     $("#confirm_process").click(function () {
-        $.post("http://localhost:3000/present", {
+        $.post("api/present", {
             token: JSON.parse(document.cookie).token,
             oldDate: oldDate,
             oldTime: oldTime,
@@ -250,7 +250,7 @@ $(function () {
                 React.createElement("button", { type: "button", className: "btn light-blue lighten-1 waves-effect waves-light", id: "register" }, "Recover"))), document.getElementById("reg"));
     });
     $("#login").click(function () {
-        $.post("http://localhost:3000/authenticate", {
+        $.post("api/authenticate", {
             id: $("#log_id").val(),
             password: $("#log_password").val()
         }, function (data) {
@@ -278,7 +278,7 @@ var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(1);
 $(function () {
     var confirmFill = function () {
-        $.get("http://localhost:3000/past/" + JSON.parse(document.cookie).token, function (data) {
+        $.get("api/past/" + JSON.parse(document.cookie).token, function (data) {
             var rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 var res = data.results[i];
@@ -341,7 +341,7 @@ var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(1);
 $(function () {
     var codeFill = function () {
-        $.get("http://localhost:3000/code/" + JSON.parse(document.cookie).token, function (data) {
+        $.get("api/code/" + JSON.parse(document.cookie).token, function (data) {
             var rows = [];
             for (var i = 0; i < data.results.length; i++) {
                 var res = data.results[i];
@@ -442,7 +442,7 @@ $(function () {
             $(".dropdown-button").dropdown();
             $("#request_submit").click(function () {
                 console.log("submitting overtime request");
-                $.post("http://localhost:3000/request", {
+                $.post("api/request", {
                     token: JSON.parse(document.cookie).token,
                     contract: $("#request_contract").val(),
                     future: $("#request_future").val(),
@@ -473,7 +473,7 @@ $(function () {
     function add_code(e) {
         e.preventDefault();
         $("#wbsModal").modal('close');
-        $.post("http://localhost:3000/code", {
+        $.post("api/code", {
             token: JSON.parse(document.cookie).token,
             code: $("#wbs_code").val()
         }, function (data) {
@@ -516,7 +516,7 @@ $(function () {
     var date = null;
     var time = null;
     var reviewFill = function () {
-        $.get("http://localhost:3000/review/" + JSON.parse(document.cookie).token, function (data) {
+        $.get("api/review/" + JSON.parse(document.cookie).token, function (data) {
             var rows = [];
             var _loop_1 = function () {
                 var res = data.results[i];
@@ -594,7 +594,7 @@ $(function () {
         React.createElement("div", { className: "modal-footer" },
             React.createElement("a", { id: "approve_process", className: "modal-action modal-close waves-effect waves-teal btn-flat" }, "Process Request"))), document.getElementById("approveModal"));
     $("#approve_process").click(function () {
-        $.post("http://localhost:3000/review", {
+        $.post("api/review", {
             token: JSON.parse(document.cookie).token,
             status: $("#approve_status").val(),
             comment: $("#approve_comment").val(),
@@ -627,7 +627,7 @@ var ReactDOM = __webpack_require__(1);
 $(function () {
     var das = JSON.parse(document.cookie).token;
     var profileFill = function () {
-        $.get("http://localhost:3000/profile/" + das, function (data) {
+        $.get("api/profile/" + das, function (data) {
             console.log(das);
             $("#profile_first_name").val(data.results.FirstName);
             $("#profile_last_name").val(data.results.LastName);
@@ -637,7 +637,7 @@ $(function () {
         });
     };
     var staffFill = function () {
-        $.get("http://localhost:3000/staff/" + JSON.parse(document.cookie).token, function (data) {
+        $.get("api/staff/" + JSON.parse(document.cookie).token, function (data) {
             var rows = [];
             var _loop_1 = function () {
                 var res = data.results[i];
@@ -814,7 +814,7 @@ $(function () {
     //Add a New User
     $("#user_add").click(function () {
         console.log($("#user_access").val());
-        $.post("http://localhost:3000/adduser", {
+        $.post("api/adduser", {
             das: $("#user_das").val(),
             password: $("#user_password").val(),
             confirm: $("#user_confirm").val(),
@@ -842,7 +842,7 @@ $(function () {
         profileFill();
     });
     $("#profile_update").click(function () {
-        $.post("http://localhost:3000/profile", {
+        $.post("api/profile", {
             first_name: $("#profile_first_name").val(),
             last_name: $("#profile_last_name").val(),
             pay_roll: $("#profile_pay_roll").val(),
@@ -928,14 +928,14 @@ $(function () {
         var start_date = $("#claim_start_date").val();
         var end_date = $("#claim_end_date").val();
         if (start_date !== "" && end_date !== "") {
-            window.location.href = "http://localhost:3000/claim/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
+            window.location.href = "api/claim/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
         }
     });
     $("#generate_report").click(function () {
         var start_date = $("#report_start_date").val();
         var end_date = $("#report_end_date").val();
         if (start_date !== "" && end_date !== "") {
-            window.location.href = "http://localhost:3000/report/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
+            window.location.href = "api/report/" + JSON.parse(document.cookie).token + "/" + start_date + "/" + end_date;
         }
     });
     $("#logout").click(function () {

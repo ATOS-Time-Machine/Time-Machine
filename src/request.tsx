@@ -25,9 +25,9 @@ $(function () {
                                 <div className="input-field col s12">
                                     <select id="request_contract">
                                         <option value="" disabled selected>Please Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                        <option value="1">Customer 1</option>
+                                        <option value="2">Customer 2</option>
+                                        <option value="3">Customer 3</option>
                                     </select>
                                     <label htmlFor="request_contract">Select a Contract</label>
                                 </div>
@@ -77,9 +77,15 @@ $(function () {
                                 <div className="input-field col s12">
                                     <select id="request_reason_overtime">
                                         <option value="" disabled selected>Please Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                        <option value="1">Fix on Fail</option>
+                                        <option value="2">Holiday Cover</option>
+                                        <option value="3">Not enough time in the day</option>
+                                        <option value="4">Out of hours planned change</option>
+                                        <option value="5">Planned BAU change</option>
+                                        <option value="6">Planned Project change</option>
+                                        <option value="7">Service Desk Reason</option>
+                                        <option value="8">Sickness cover</option>
+                                        <option value="9">Tavel Time</option>
                                     </select>
                                     <label htmlFor="request_reason_overtime">Reason for Overtime</label>
                                 </div>
@@ -87,9 +93,9 @@ $(function () {
                                 <div className="input-field col s12">
                                     <select id="request_reason_hours">
                                         <option value="" disabled selected>Please Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                        <option value="1">Customer Change Window</option>
+                                        <option value="2">Customer Requirement</option>
+                                        <option value="3">Project Deadline Approaching</option>
                                     </select>
                                     <label htmlFor="request_reason_hours">Reason Cannot Done in Hours</label>
                                 </div>
@@ -97,9 +103,12 @@ $(function () {
                                 <div className="input-field col s12">
                                     <select id="request_rate">
                                         <option value="" disabled selected>Please Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                        <option value="1">Overtime 1.5 Hours</option>
+                                        <option value="2">Overtime 2.0 Hours</option>
+                                        <option value="3">Overtime - Time and 1/3</option>
+                                        <option value="4">Overtime - Trave Time @ BR</option>
+                                        <option value="5">Call Out 1.5 Hours</option>
+                                        <option value="6">Call Out 2.0 Hours</option>
                                     </select>
                                     <label htmlFor="request_rate">Overtime Rate</label>
                                 </div>
@@ -112,9 +121,8 @@ $(function () {
                                 <div className="input-field col s12">
                                     <select id="request_revenue">
                                         <option value="" disabled selected>Please Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                        <option value="1">Yes</option>
+                                        <option value="2">No</option>
                                     </select>
                                     <label htmlFor="request_revenue">Work Revenue Generating</label>
                                 </div>
@@ -122,10 +130,9 @@ $(function () {
                                 <div className="input-field col s12">
                                     <select id="request_paying">
                                         <option value="" disabled selected>Please Select</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
+                                        <option value="1">Account</option>
+                                        <option value="2">Customer</option>
+                                     </select>
                                     <label htmlFor="request_paying">Who is paying?</label>
                                 </div>
                             </div>
